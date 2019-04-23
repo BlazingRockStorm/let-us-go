@@ -43,6 +43,9 @@ gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 gem 'date_validator'
 # Use Font Awesome
 gem "font-awesome-rails"
+# Use GG auth
+gem "omniauth"
+gem "omniauth-google-oauth2"
 # Use Open Weather Map
 gem 'open-weather'
 
