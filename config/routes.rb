@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   get 'tags/:tag', to: 'welcome#index', as: "tag"
 
   # resources :comments
-  devise_for :users
+  devise_for :users, controllers: {
+    omniauth_callbacks: 'users/omniauth_callbacks'
+  }
+
   resources :users
   resources :events do
     resources :comments, :except => [:index]

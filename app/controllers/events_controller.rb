@@ -1,3 +1,5 @@
+require 'open_weather'
+
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy, :public_event]
   before_action :authenticate_user!, except: [:show]
