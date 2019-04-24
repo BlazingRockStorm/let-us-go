@@ -21,6 +21,25 @@
     min-height: 600px;
 }
 
+.side-nav{
+    li{
+        border: solid 1px $bgDefault;
+    }
+    :hover{
+        background-color: $bgDefault;        
+        a {
+            color: #fff !important;
+        }
+    }
+}
+
+.side-nav-click{
+    background-color: $bgDefault;        
+    a {
+        color: #fff !important;
+    }
+}
+
 .card-header{
     background-color: $bgDefault;
     color: $colDefault;
