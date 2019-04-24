@@ -1,4 +1,7 @@
 class Event < ApplicationRecord
+    include Elasticsearch::Model
+    include Elasticsearch::Model::Callbacks
+
     has_many :attendances
     has_many :comments
     has_many :users, through: :attendances

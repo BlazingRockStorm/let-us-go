@@ -49,9 +49,9 @@ gem "omniauth-google-oauth2"
 # Use Open Weather Map
 gem 'open-weather'
 # Use ElasticSearch
-gem 'elasticsearch-rails', github: 'elastic/elasticsearch-rails', branch: '6.x'
-gem 'elasticsearch-model', github: 'elastic/elasticsearch-rails', branch: '6.x'
-gem 'elasticsearch-persistence', github: 'elastic/elasticsearch-rails', branch: '6.x'
+gem 'elasticsearch-rails', '~> 6.0.0'
+gem 'elasticsearch-model', '~> 6.0.0'
+gem 'elasticsearch-persistence', '~> 6.0.0'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

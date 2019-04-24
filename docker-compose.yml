@@ -11,9 +11,9 @@ services:
 
   web:
     build: .
-    command: /bin/sh -c "bundle exec rails server -e production -p 8888"
+    command: /bin/sh -c "bundle exec rails server -e production -p 3000"
     ports:
-      - "8888:8888"
+      - "3000:3000"
     volumes:
       - .:/usr/src/app
     environment:
@@ -22,8 +22,52 @@ services:
       - .env.development
     depends_on:
       - db
+      - elasticsearch
     restart: always
+
+  elasticsearch:
+    build:
+      context: elasticsearch/
+    volumes:
+      - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+    networks:
+      - elk
+
+  logstash:
+    build:
+      context: logstash/
+    volumes:
+      - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
+      - ./logstash/pipeline:/usr/share/logstash/pipeline:ro
+    ports:
+      - "5000:5000"
+    environment:
+      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+    networks:
+      - elk
+    depends_on:
+      - elasticsearch
+
+  kibana:
+    build:
+      context: kibana/
+    volumes:
+      - ./kibana/config/:/usr/share/kibana/config:ro
+    ports:
+      - "5601:5601"
+    networks:
+      - elk
+    depends_on:
+      - elasticsearch
 
 volumes:
   db-data:
-    
+
+networks:
+  elk:
+    driver: bridge
