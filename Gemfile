@@ -48,6 +48,8 @@ gem "omniauth"
 gem "omniauth-google-oauth2"
 # Use Open Weather Map
 gem 'open-weather'
+# Use SearchCop
+gem 'search_cop'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

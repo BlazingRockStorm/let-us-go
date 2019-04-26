@@ -6,6 +6,15 @@ class WelcomeController < ApplicationController
     else
       @events = Event.by_hidden_status()
     end
+
+    if params[:search]
+      @events = Event.by_hidden_status().search(params[:search])
+      @events_found = @events.count
+      @places = Place.search(params[:search])
+      @places_found = @places.count
+    else
+      @events = Event.by_hidden_status()
+    end
   end
 
   def place_index
