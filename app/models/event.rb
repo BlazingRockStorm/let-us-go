@@ -1,5 +1,6 @@
 class Event < ApplicationRecord
     include SearchCop
+    paginates_per 3
     
     has_many :attendances
     has_many :comments

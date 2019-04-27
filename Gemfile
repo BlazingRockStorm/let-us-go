@@ -50,6 +50,9 @@ gem "omniauth-google-oauth2"
 gem 'open-weather'
 # Use SearchCop
 gem 'search_cop'
+# Paginate
+gem 'kaminari'
+gem 'bootstrap4-kaminari-views'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

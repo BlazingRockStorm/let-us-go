@@ -13,11 +13,11 @@ class WelcomeController < ApplicationController
       @places = Place.search(params[:search])
       @places_found = @places.count
     else
-      @events = Event.by_hidden_status()
+      @events = Event.by_hidden_status().page params[:page]
     end
   end
 
   def place_index
-    @places = Place.all
+    @places = Place.all.page params[:page]
   end
 end
