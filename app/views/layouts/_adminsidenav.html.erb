@@ -1,12 +1,24 @@
 <div class="col-md-2">
   <ul class="nav nav-pills flex-column side-nav">
-    <li class="nav-item">
+    <% if current_page?(places_path) %>
+      <li class="nav-item side-nav-click">
+    <% else %>
+      <li class="nav-item">
+    <% end %>
       <%= link_to 'Manage Places', places_path, method: :get, class: "nav-link" %>
     </li>
-    <li class="nav-item">
+    <% if current_page?(events_path) %>
+      <li class="nav-item side-nav-click">
+    <% else %>
+      <li class="nav-item">
+    <% end %>
       <%= link_to 'Manage Events', events_path, method: :get, class: "nav-link" %>
     </li>
-    <li class="nav-item">
+    <% if current_page?(users_path) %>
+      <li class="nav-item side-nav-click">
+    <% else %>
+      <li class="nav-item">
+    <% end %>
       <%= link_to 'Manage Admins', users_path, method: :get, class: "nav-link" %>
     </li>
     <li class="nav-item">
