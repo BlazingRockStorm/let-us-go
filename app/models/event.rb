@@ -1,4 +1,7 @@
 class Event < ApplicationRecord
+    include SearchCop
+    paginates_per 3
+    
     has_many :attendances
     has_many :comments
     has_many :users, through: :attendances
@@ -10,6 +13,12 @@ class Event < ApplicationRecord
     validates :end, presence: true, date: { after:  :start}
     belongs_to :place
 
+    search_scope :search do
+        attributes :name, :description, :start, :age_filter
+        attributes place: "place.name"
+        # ...
+    end
+    
     def all_tags=(names)
         self.tags = names.split(",").map do |name|
             Tag.where(name: name.strip).first_or_create!

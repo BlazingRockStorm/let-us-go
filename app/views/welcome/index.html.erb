@@ -13,6 +13,9 @@
       <% if params[:tag] %>
         <h2>Results for tag: <%= link_to('#'+params[:tag], params[:tag]) %></h2>
       <% end %>
+      <% if params[:search] %>
+        <h2><%= @events_found %> results for events with: <%= params[:search] %></h2>
+      <% end %>
       <% @events.each do |event| %>
         <div class="card mb-2">
           <div class="card-body">
@@ -37,6 +40,28 @@
           </div>
         </div>
       <% end %>
+
+      <% if params[:search] %>
+        <h2><%= @places_found %> results for places with: <%= params[:search] %></h2>
+          <% @places.each do |place| %>
+            <div class="card mb-2">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-4 first-picture">
+                    <%= image_tag(place.picture, :alt => "place picture", :class => "place-picture") if place.picture.attached? %>
+                  </div>
+                  <div class="col-md-8">
+                    <%= link_to content_tag(:h5, place.name, :class => "card-title"), place_path(place)%>
+                    
+                    <p class="card-text"><%= place.description %></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+      <% end %>
+
+      <%= paginate @events, theme: 'twitter-bootstrap-4' %>
     </div>
 
     <div class="col-md-3">
