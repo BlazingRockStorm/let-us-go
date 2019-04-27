@@ -1,5 +1,6 @@
 class WelcomeController < ApplicationController
   extend WelcomeHelper
+  
   def index
     if params[:tag]
       @events = Event.by_hidden_status().tagged_with(params[:tag])
@@ -19,5 +20,8 @@ class WelcomeController < ApplicationController
 
   def place_index
     @places = Place.all.page params[:page]
+  end
+
+  def terms
   end
 end
