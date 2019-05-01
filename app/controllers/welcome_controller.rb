@@ -4,11 +4,7 @@ class WelcomeController < ApplicationController
   def index
     if params[:tag]
       @events = Event.by_hidden_status().tagged_with(params[:tag]).page params[:page]
-    else
-      @events = Event.by_hidden_status().page params[:page]
-    end
-
-    if params[:search]
+    elsif params[:search]
       @events = Event.by_hidden_status().search(params[:search]).page params[:page]
       @events_found = @events.count
       @places = Place.search(params[:search])
@@ -16,12 +12,16 @@ class WelcomeController < ApplicationController
     else
       @events = Event.by_hidden_status().page params[:page]
     end
+    @random_places = Place.order("RAND()").first(3)
   end
 
   def place_index
     @places = Place.all.page params[:page]
+    @random_places = Place.order("RAND()").first(3)
   end
 
   def terms
+    @places = Place.all.page params[:page]
+    @random_places = Place.order("RAND()").first(3)
   end
 end

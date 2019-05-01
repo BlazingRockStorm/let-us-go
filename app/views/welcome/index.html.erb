@@ -71,18 +71,7 @@
         <div class="card-header">
           Featured Places
         </div>
-        <div class="card-body">
-          <h5 class="card-title">Phố đi bộ Hồ Gươm</h5>
-          <p>bla bla</p>
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Phố đi bộ Hồ Gươm</h5>
-          <p>bla bla</p>
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Phố đi bộ Hồ Gươm</h5>
-          <p>bla bla</p>
-        </div>
+        <%= render partial: "places/random",  collection: @random_places, as: "place" %>
       </div>
 
     </div>
