@@ -15,6 +15,7 @@
           <div class="card-body">
             <div class="row">
               <div class="col-md-4 first-picture">
+                <%= image_tag(image_url("blank.jpg"), :alt => "place picture", :class => "place-picture") if place.picture.attached? == false %>
                 <%= image_tag(place.picture, :alt => "place picture", :class => "place-picture") if place.picture.attached? %>
               </div>
               <div class="col-md-8">

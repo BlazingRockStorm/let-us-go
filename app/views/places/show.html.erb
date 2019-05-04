@@ -23,6 +23,7 @@
 
       <div class="row">
         <div class="col-md-9 place-image-holder">
+          <%= image_tag(image_url("blank.jpg"), :alt => "Place picture", :class => "place-picture") if @place.picture.attached? == false %>
           <%= image_tag(@place.picture, :alt => "Place picture", :class => "place-picture") if @place.picture.attached? %>
         </div>
 

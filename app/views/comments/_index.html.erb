@@ -1,6 +1,10 @@
 <div class="row" id='comment_<%= comment.id %>'>
   <div class="col-md-3">
-    <%= image_tag(comment.user.avatar, :alt => "avatar", :class => "comment-avatar") if comment.user.avatar.attached? %>
+    <% if comment.user.avatar.attached? %>
+      <%= image_tag(comment.user.avatar, :alt => "avatar", :class => "comment-avatar") %>
+    <% else %>
+      <%= image_tag(image_url("blank-avatar.png"), :alt => "avatar", :class => "comment-avatar") %>
+    <% end %>
     <%= comment.user.name %>
   </div>
   <div class="col-md-5">
