@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create!(name: "Admin", address: "Shinagawa-ku, Tokyo", gender: Faker::Gender.binary_type, phone: Faker::PhoneNumber.phone_number, email: "admin@email.com", password: "123456", role: "admin")
+User.create!(name: "Provider 1", address: "Hanoi", gender: Faker::Gender.binary_type, phone: Faker::PhoneNumber.phone_number, email: "provider1@email.com", password: "123456", role: "provider")
 User.create!(
     name: Faker::Name.name,
     address: Faker::Address.full_address,
