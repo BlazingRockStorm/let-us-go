@@ -65,22 +65,27 @@
           <%= link_to 'Edit', edit_event_path(@event), :class => "btn btn-primary" %> 
           <%= link_to 'Back', "javascript: history.go(-1)", :class => "btn btn-secondary" %>
         <% else %>
-          <% if @event.user_ids.include?(current_user.id) %>
-            <p>You have signed up for <span id="current_attendance"><%= @attendance.accompanied_number %></span> people.</p>
-            <%= link_to "Edit Joining", edit_event_attendance_path(@event, @attendance), :remote => true,
-              :class => "btn btn-success", 'data-toggle' => 'modal', 'data-target' => "#attend-form" %>
+          <% if Time.now > @event.end %>
+            This event has ended. </br>
           <% else %>
-            <p id="join_event">Do you want to register for the event?</p>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#attend-form" id="create-join">
-              Join
-            </button>
-          <% end %>
-          <div class="modal fade" id="attend-form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <%= render 'attendances/form' %> 
+            <% if @event.user_ids.include?(current_user.id) %>
+              <p>You have signed up for <span id="current_attendance"><%= @attendance.accompanied_number %></span> people.</p>
+              <%= link_to "Edit Joining", edit_event_attendance_path(@event, @attendance), :remote => true,
+                :class => "btn btn-success", 'data-toggle' => 'modal', 'data-target' => "#attend-form" %>
+              <%= link_to "Don't wanna go", event_attendance_path(@event, @attendance), method: :delete,
+                data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
+            <% else %>
+              <p id="join_event">Do you want to register for the event?</p>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#attend-form" id="create-join">
+                Join
+              </button>
+            <% end %>
+            <div class="modal fade" id="attend-form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <%= render 'attendances/form' %> 
+              </div>
             </div>
-          </div>
-
+          <% end %>
           <%= link_to 'Back', "javascript: history.go(-1)", :class => "btn btn-secondary" %>
           <div class="comment-form mt-2">
             <%= render partial: "comments/form", locals: { event: @event, comment: @comment } %>
