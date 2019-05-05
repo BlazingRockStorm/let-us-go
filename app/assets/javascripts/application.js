@@ -19,3 +19,4 @@
 //= require bootstrap
 //= require moment 
 //= require fullcalendar
+//= require gijgo/js/gijgo	

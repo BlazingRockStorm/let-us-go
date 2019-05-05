@@ -62,11 +62,15 @@
 
       <% if user_signed_in? %>
         <% if current_user.admin? %>
-          <%= link_to 'Edit', edit_event_path(@event), :class => "btn btn-primary" %> 
+          <% if Time.now > @event.end %>
+            <p>This event has ended.</p>
+          <% else %>
+            <%= link_to 'Edit', edit_event_path(@event), :class => "btn btn-primary" %> 
+          <% end %>
           <%= link_to 'Back', "javascript: history.go(-1)", :class => "btn btn-secondary" %>
         <% else %>
           <% if Time.now > @event.end %>
-            This event has ended. </br>
+            <p>This event has ended.</p>
           <% else %>
             <% if @event.user_ids.include?(current_user.id) %>
               <p>You have signed up for <span id="current_attendance"><%= @attendance.accompanied_number %></span> people.</p>
