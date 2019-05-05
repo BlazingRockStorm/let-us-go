@@ -15,7 +15,9 @@ class EventPolicy < ApplicationPolicy
     end 
     
     def edit?
-      @current_user.admin?
+      unless Time.now > @event.end
+        @current_user.admin?
+      end
     end 
 
     def show?
@@ -27,7 +29,9 @@ class EventPolicy < ApplicationPolicy
     end
 
     def update?
-      @current_user.admin?
+      unless Time.now > @event.end
+        @current_user.admin?
+      end
     end
 
     def public_event?
@@ -35,7 +39,9 @@ class EventPolicy < ApplicationPolicy
     end
 
     def destroy?
-      @current_user.admin?
+      unless Time.now > @event.end
+        @current_user.admin?
+      end
     end
 
     def permitted_attributes

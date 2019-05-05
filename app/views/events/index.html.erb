@@ -24,13 +24,21 @@
               <td><%= time_format(event.start) %></td>
               <td><%= time_format(event.end) %></td>
               <td><%= link_to 'Show', event, class: "btn btn-info" %></td>
-              <td><%= link_to 'Edit', edit_event_path(event), class: "btn btn-warning" %></td>
+              <% if Time.now > event.end %>
+                <td><a class="btn btn-secondary" disabled="true">Edit</a></td>
+              <% else %>
+                <td><%= link_to 'Edit', edit_event_path(event), class: "btn btn-warning" %></td>
+              <% end %>
               <% if event.hidden_status== true %>
                 <td><%= link_to 'Public Event', public_event_path(event), method: :put, data: { confirm: 'Are you sure?' }, class: "btn btn-warning" %></td>
               <% else %>
                 <td><%= link_to 'Event has been public', public_event_path(event), class: "btn btn-disabled" %></td>
               <% end %>
-              <td><%= link_to 'Delete', event, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+              <% if Time.now > event.end %>
+                <td><a class="btn btn-secondary" disabled="true">Delete</a></td>
+              <% else %>
+                <td><%= link_to 'Delete', event, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+              <% end %>
             </tr>
           <% end %>
         </tbody>
