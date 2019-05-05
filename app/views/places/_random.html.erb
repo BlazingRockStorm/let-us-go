@@ -1,0 +1,10 @@
+<div class="card-body">
+    <h5 class="card-title">
+        <%= link_to place.name, place_path(place) %>
+    </h5>
+    <p>
+    <p>
+        <%= image_tag(image_url("blank.jpg"), :alt => "Place picture", class: "random-place") if place.picture.attached? == false %>
+        <%= image_tag(place.picture, :alt => "Place picture", class: "random-place") if place.picture.attached? %>
+    </p>
+</div>

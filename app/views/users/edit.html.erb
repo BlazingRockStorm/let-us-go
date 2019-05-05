@@ -2,14 +2,11 @@
   <div class="row mt-5">
     <% if current_user.admin? %>
       <%= render('layouts/adminsidenav') %>
-      <div class="col-md-7 mb-5">
-        <h1>Editing Admin</h1>
     <% else %>
       <%= render('layouts/sidenav') %>
-      <div class="col-md-7 mb-5">
-        <h1>Editing User</h1>
     <% end %>
-    
+    <div class="col-md-7 mb-5">
+        <h1>Editing User</h1>
 
         <%= form_with(model: @user, local: true) do |form| %>
           <% if @user.errors.any? %>

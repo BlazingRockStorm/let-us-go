@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.by_role()
+    @users = User.all
     authorize @users
   end
 
@@ -32,9 +32,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     authorize User
-    @user.role = "admin"
 
     respond_to do |format|
+      byebug
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }

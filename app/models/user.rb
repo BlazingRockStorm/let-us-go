@@ -1,7 +1,7 @@
 class User < ApplicationRecord
-  has_many :attendances
+  has_many :attendances, dependent: :delete_all
   has_many :events, through: :attendances
-  enum role: [:user, :admin]
+  enum role: [:user, :provider, :admin]
   after_initialize :set_default_role, :if => :new_record?
   scope :by_role, -> {where role: "admin" }
   has_one_attached :avatar

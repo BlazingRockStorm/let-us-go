@@ -22,6 +22,7 @@
             <div class="row">
               <div class="col-md-4 first-picture">
                 <%= image_tag(event.pictures.first, :alt => "Event picture", :class => "events-list-picture") if event.pictures.attached? %>
+                <%= image_tag(image_url("blank.jpg"), :alt => "Event picture", :class => "events-list-picture") if event.pictures.attached? == false %>
               </div>
               <div class="col-md-8">
                 <%= link_to content_tag(:h5, event.name, :class => "card-title"), event_path(event)%>
@@ -48,6 +49,7 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-md-4 first-picture">
+                    <%= image_tag(image_url("blank.jpg"), :alt => "place picture", :class => "place-picture") if place.picture.attached? == false %>
                     <%= image_tag(place.picture, :alt => "place picture", :class => "place-picture") if place.picture.attached? %>
                   </div>
                   <div class="col-md-8">
@@ -71,18 +73,7 @@
         <div class="card-header">
           Featured Places
         </div>
-        <div class="card-body">
-          <h5 class="card-title">Phố đi bộ Hồ Gươm</h5>
-          <p>bla bla</p>
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Phố đi bộ Hồ Gươm</h5>
-          <p>bla bla</p>
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Phố đi bộ Hồ Gươm</h5>
-          <p>bla bla</p>
-        </div>
+        <%= render partial: "places/random",  collection: @random_places, as: "place" %>
       </div>
 
     </div>
