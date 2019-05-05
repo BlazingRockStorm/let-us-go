@@ -24,6 +24,7 @@ class EventsController < ApplicationController
     options = { units: "metric", APPID: Rails.application.credentials.open_weather_map_api_key}
     options[:cnt] = 2
     @weathers = OpenWeather::ForecastDaily.geocode(@event.place.latitude, @event.place.longitude, options)
+    @random_places = Place.order("RAND()").first(3)
   end
 
   # GET /events/new

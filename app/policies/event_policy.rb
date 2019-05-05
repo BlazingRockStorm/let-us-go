@@ -7,11 +7,11 @@ class EventPolicy < ApplicationPolicy
     end
   
     def index?
-      @current_user.admin?
+      @current_user.admin? or @current_user.provider?
     end
 
     def new?
-      @current_user.admin?
+      @current_user.provider?
     end 
     
     def edit?
@@ -25,7 +25,7 @@ class EventPolicy < ApplicationPolicy
     end
   
     def create?
-      @current_user.admin?
+      @current_user.provider?
     end
 
     def update?

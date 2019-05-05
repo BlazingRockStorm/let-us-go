@@ -128,7 +128,13 @@
             <% end %>
           </tr>
         </tbody>
-      </table>
+      </table>      
+      <div class="card mt-2">
+        <div class="card-header">
+          Featured Places
+        </div>
+        <%= render partial: "places/random",  collection: @random_places, as: "place" %>
+      </div>
     </div>
   </div>
 </div>
