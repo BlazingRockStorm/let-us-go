@@ -2,6 +2,8 @@
   <div class="row mt-5">
     <% if current_user.admin? %>
       <%= render('layouts/adminsidenav') %>
+    <% elsif user_signed_in? && current_user.provider? %>
+      <%= render('layouts/providersidenav') %>
     <% else %>
       <%= render('layouts/sidenav') %>
     <% end %>
@@ -95,6 +97,20 @@
               <%= form.text_field :phone, class: "form-control" %>
             </div>
           </div>
+    
+          <% if current_user.admin? %>
+            <div class="form-group row">
+              <%= form.label :role, class: "col-md-3 col-form-label" %>
+              <div class="col-md-3">
+                <%= form.radio_button :role, 'admin' %>
+                <%= label :role, 'Admin' %>
+              </div>
+              <div class="col-md-3">
+                <%= form.radio_button :role, 'provider' %>
+                <%= label :role, 'Provider' %> 
+              </div>
+            </div>
+          <% end %>
 
           <div class="form-group row mb-0">
             <div class="col-md-6 offset-md-3 text-center">
@@ -108,6 +124,12 @@
       </div>
       <div class="col-md-3">
           <%= render('layouts/advertisement') %>
+          <div class="card mt-2">
+            <div class="card-header">
+              Featured Places
+            </div>
+            <%= render partial: "places/random",  collection: @random_places, as: "place" %>
+          </div>
       </div>
   </div>
 </div>

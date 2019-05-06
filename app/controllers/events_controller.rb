@@ -11,7 +11,11 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     authorize Event
-    @events = Event.all
+    if current_user.admin?
+      @events = Event.all
+    else 
+      @events = current_user.events.all
+    end
   end
 
   # GET /events/1
@@ -24,6 +28,7 @@ class EventsController < ApplicationController
     options = { units: "metric", APPID: Rails.application.credentials.open_weather_map_api_key}
     options[:cnt] = 2
     @weathers = OpenWeather::ForecastDaily.geocode(@event.place.latitude, @event.place.longitude, options)
+    @random_places = Place.order("RAND()").first(3)
   end
 
   # GET /events/new
@@ -100,6 +105,6 @@ class EventsController < ApplicationController
     def event_params
       params[:event][:start] = params[:event][:start].to_datetime
       params[:event][:end] = params[:event][:end].to_datetime
-      params.require(:event).permit(:name, :description, :place_id, :start, :end, :age_filter, :all_tags, pictures: [])
+      params.require(:event).permit(:name, :description, :place_id, :provider_id, :start, :end, :age_filter, :all_tags, pictures: [])
     end
 end
