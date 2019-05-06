@@ -1,5 +1,9 @@
 <div class="row">
-    <%= render('layouts/adminsidenav') %>
+    <% if current_user.admin? %>
+      <%= render('layouts/adminsidenav') %>
+    <% else %>
+      <%= render('layouts/providersidenav') %>
+    <% end %>
     <div class="col-md-7">
         <h1>New Event</h1>
         <%= render 'form', event: @event %>

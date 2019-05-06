@@ -410,3 +410,20 @@ events[6].pictures.attach([io: File.open(Rails.root.join('app', 'assets', 'image
 events[8].pictures.attach([io: File.open(Rails.root.join('app', 'assets', 'images', 'events', '14.jpg')), filename: '14.jpg'])
 events[9].pictures.attach([io: File.open(Rails.root.join('app', 'assets', 'images', 'events', '15.jpg')), filename: '15.jpg'])
 events[10].pictures.attach([io: File.open(Rails.root.join('app', 'assets', 'images', 'events', '16.jpeg')), filename: '16.jpeg'])
+
+200.times do
+    Comment.create!(
+        user_id: rand(4..24),
+        event_id: rand(1..10),
+        content: Faker::Lorem.sentence,
+    )
+end
+
+40.times do
+    Attendance.create!(
+        user_id: rand(4..24),
+        event_id: rand(1..10),
+        adults_number: rand(1..2),
+        children_number: rand(1..5),
+    )
+end

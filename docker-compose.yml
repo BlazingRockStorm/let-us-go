@@ -11,9 +11,9 @@ services:
 
   web:
     build: .
-    command: /bin/sh -c "bundle exec rails server -e production -p 8888"
+    command: /bin/sh -c "bundle exec rails server -e production -p 3000"
     ports:
-      - "8888:8888"
+      - "3000:3000"
     volumes:
       - .:/usr/src/app
     environment:

@@ -47,7 +47,7 @@
             </div>
           </div>
 
-          <% if @current_user.admin? or @current_user == @user %>
+          <% if user_signed_in? && @current_user == @user %>
             <h1 class="mt-5"><%= @user.name %>'s calendar this month</h1>
             <div class="card">
               <div class="card-body">
