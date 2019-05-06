@@ -1,22 +1,26 @@
-<div class="row" id='comment_<%= comment.id %>'>
-  <div class="col-md-3">
-    <% if comment.user.avatar.attached? %>
-      <%= image_tag(comment.user.avatar, :alt => "avatar", :class => "comment-avatar") %>
-    <% else %>
-      <%= image_tag(image_url("blank-avatar.png"), :alt => "avatar", :class => "comment-avatar") %>
-    <% end %>
-    <%= link_to comment.user.name, user_path(comment.user) %>
-  </div>
-  <div class="col-md-5">
-    <%= comment.content %><br>
-    <%= image_tag(comment.image, :alt => "Comment image", :class => "comment-picture") if comment.image.attached? %>
-  </div>
-  <% if user_signed_in? && current_user == comment.user %>  
-    <div class="col-md-1">
-      <%= link_to 'Edit', edit_event_comment_path(comment.event, comment), class: "btn btn-link", remote: true %>
+<div class="card mb-2">
+  <div class="card-body">
+    <div class="row" id='comment_<%= comment.id %>'>
+      <div class="col-md-4">
+        <% if comment.user.avatar.attached? %>
+          <%= image_tag(comment.user.avatar, :alt => "avatar", :class => "comment-avatar") %>
+        <% else %>
+          <%= image_tag(image_url("blank-avatar.png"), :alt => "avatar", :class => "comment-avatar") %>
+        <% end %>
+        <%= link_to comment.user.name, user_path(comment.user) %>
+      </div>
+      <div class="col-md-5">
+        <%= comment.content %><br>
+        <%= image_tag(comment.image, :alt => "Comment image", :class => "comment-picture") if comment.image.attached? %>
+      </div>
+      <% if user_signed_in? && current_user == comment.user %>  
+        <div class="col-md-1">
+          <%= link_to 'Edit', edit_event_comment_path(comment.event, comment), class: "btn btn-link", remote: true %>
+        </div>
+        <div class="col-md-1">
+          <%= link_to 'Delete', event_comment_path(comment.event, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link" %>
+        </div>
+      <% end %>
     </div>
-    <div class="col-md-1">
-      <%= link_to 'Delete', event_comment_path(comment.event, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link" %>
-    </div>
-  <% end %>
+  </div>
 </div>
