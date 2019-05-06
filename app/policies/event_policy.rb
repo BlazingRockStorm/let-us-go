@@ -21,7 +21,7 @@ class EventPolicy < ApplicationPolicy
     end 
 
     def show?
-      @current_user && @current_user.admin? or @event.hidden_status==false
+      @current_user && @current_user.admin? or @current_user && @current_user.provider? or @event.hidden_status==false
     end
   
     def create?

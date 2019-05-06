@@ -8,6 +8,7 @@
 
 User.create!(name: "Admin", address: "Shinagawa-ku, Tokyo", gender: Faker::Gender.binary_type, phone: Faker::PhoneNumber.phone_number, email: "admin@email.com", password: "123456", role: "admin")
 User.create!(name: "Provider 1", address: "Hanoi", gender: Faker::Gender.binary_type, phone: Faker::PhoneNumber.phone_number, email: "provider1@email.com", password: "123456", role: "provider")
+User.create!(name: "Provider 2", address: "Hanoi", gender: Faker::Gender.binary_type, phone: Faker::PhoneNumber.phone_number, email: "provider2@email.com", password: "123456", role: "provider")
 User.create!(
     name: Faker::Name.name,
     address: Faker::Address.full_address,
@@ -287,7 +288,7 @@ events = Event.create!([
         name: "Khám phá rừng Cúc Phương", 
         description: "Dịp để các em nhỏ tìm hiểu với thiên nhiên và tham quan Cây chò ngàn năm", 
         place_id: 11, 
-        provider_id: 2,
+        provider_id: 3,
         start: 10.days.from_now, 
         end: 12.days.from_now, 
         hidden_status: false,
@@ -327,7 +328,7 @@ events = Event.create!([
         name: "Chương trình hài thiếu nhi", 
         description: "Có sự góp mặt của các nghệ sĩ hài nổi tiếng", 
         place_id: 5, 
-        provider_id: 2,
+        provider_id: 3,
         start: 12.days.from_now, 
         end: 13.days.from_now, 
         hidden_status: false,
@@ -347,7 +348,7 @@ events = Event.create!([
         name: "Trò chơi vận động tổng hợp bãi biển", 
         description: "Sự kiện tổ chức nhằm cho các em thiếu nhi vận động", 
         place_id: 19, 
-        provider_id: 2,
+        provider_id: 3,
         start: 12.days.from_now, 
         end: 13.days.from_now, 
         hidden_status: false,
