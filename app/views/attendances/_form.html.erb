@@ -9,11 +9,18 @@
         <div class="modal-body">
             
             <div class="row">
-                <%= form.label :accompanied_number, "Number of people", class: "control-label col-sm-4" %>
+                <%= form.label :adults_number, "Number of adults", class: "control-label col-sm-4" %>
                 <div class="col-sm-8">
-                    <%= form.number_field :accompanied_number, class: 'form-control attend-number-box', autofocus: true, :id => 'attend-number-box', min: 2, max: 10 %>
+                    <%= form.number_field :adults_number, class: 'form-control attend-number-box', autofocus: true, :id => 'attend-number-box', min: 1, max: 2 %>
                 </div>
             </div>
+            <div class="row">
+                <%= form.label :children_number, "Number of children", class: "control-label col-sm-4" %>
+                <div class="col-sm-8">
+                    <%= form.number_field :children_number, class: 'form-control attend-number-box', autofocus: true, :id => 'attend-number-box', min: 1, max: 5 %>
+                </div>
+            </div>
+
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

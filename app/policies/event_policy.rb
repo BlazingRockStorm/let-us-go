@@ -35,7 +35,7 @@ class EventPolicy < ApplicationPolicy
     end
 
     def public_event?
-      @current_user.admin?
+      @current_user.admin? or @current_user.provider?
     end
 
     def destroy?
