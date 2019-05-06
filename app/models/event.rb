@@ -3,6 +3,7 @@ class Event < ApplicationRecord
     paginates_per 3
     
     has_many :attendances, dependent: :delete_all
+    belongs_to :provider, class_name: "User", foreign_key: "provider_id"
     has_many :comments, dependent: :delete_all
     has_many :users, through: :attendances
     has_many :taggings, dependent: :delete_all

@@ -7,11 +7,11 @@
   </script>
 <% end %>
 
-<p id="notice"><%= notice %></p>
-
 <div class="row">    
     <% if user_signed_in? && current_user.admin? %>
       <%= render('layouts/adminsidenav') %>
+    <% elsif user_signed_in? && current_user.provider? %>
+      <%= render('layouts/providersidenav') %>
     <% else %>
       <%= render('layouts/sidenav') %>
     <% end %>

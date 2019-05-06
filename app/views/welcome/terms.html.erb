@@ -4,7 +4,11 @@
   <div class="row">
 
 
-    <%= render('layouts/sidenav') %>
+    <% if user_signed_in? && current_user.provider? %>
+      <%= render('layouts/providersidenav') %>
+    <% else %>
+      <%= render('layouts/sidenav') %>
+    <% end %>
 
     <div class="col-md-7">
       <h1>Terms of service</h1>

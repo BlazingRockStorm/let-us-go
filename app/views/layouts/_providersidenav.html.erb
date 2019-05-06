@@ -1,0 +1,28 @@
+<div class="col-md-2">
+  <ul class="nav nav-pills flex-column side-nav">
+    <% if current_page?(events_path) %>
+      <li class="nav-item side-nav-click">
+    <% else %>
+      <li class="nav-item">
+    <% end %>
+      <%= link_to 'Manage Events', events_path, method: :get, class: "nav-link" %>
+    </li>
+    <% if current_page?(home_places_path) %>
+      <li class="nav-item side-nav-click">
+    <% else %>
+      <li class="nav-item">
+    <% end %>
+      <%= link_to 'Places', home_places_path, method: :get, class: "nav-link" %>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">View analytics</a>
+    </li>
+    <% if current_page?(terms_path) %>
+      <li class="nav-item side-nav-click">
+    <% else %>
+      <li class="nav-item">
+    <% end %>
+      <%= link_to 'Terms', terms_path, method: :get, class: "nav-link" %>
+    </li>
+  </ul>
+</div>

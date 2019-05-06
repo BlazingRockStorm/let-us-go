@@ -31,11 +31,16 @@
           <% end %>
         </div>
         <div class="col-md-6">
-          <p><%= @event.name %></p>
+          <h3><%= @event.name %></h3>
 
           <p>
             <strong>Tags:</strong>
             <%=raw tag_links(@event.all_tags)%>
+          </p>
+
+          <p>
+            <strong>Provider:</strong>
+            <%= link_to @event.provider.name, user_path(@event.provider) %>
           </p>
 
           <p>
@@ -61,12 +66,14 @@
       </p>
 
       <% if user_signed_in? %>
-        <% if current_user.admin? %>
+        <% if current_user.provider? %>
           <% if Time.now > @event.end %>
             <p>This event has ended.</p>
           <% else %>
             <%= link_to 'Edit', edit_event_path(@event), :class => "btn btn-primary" %> 
           <% end %>
+          <%= link_to 'Back', "javascript: history.go(-1)", :class => "btn btn-secondary" %>
+        <% elsif current_user.admin? %>
           <%= link_to 'Back', "javascript: history.go(-1)", :class => "btn btn-secondary" %>
         <% else %>
           <% if Time.now > @event.end %>

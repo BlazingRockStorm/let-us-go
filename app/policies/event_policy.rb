@@ -16,7 +16,7 @@ class EventPolicy < ApplicationPolicy
     
     def edit?
       unless Time.now > @event.end
-        @current_user.admin?
+        @current_user.provider?
       end
     end 
 
@@ -30,7 +30,7 @@ class EventPolicy < ApplicationPolicy
 
     def update?
       unless Time.now > @event.end
-        @current_user.admin?
+        @current_user.provider?
       end
     end
 
