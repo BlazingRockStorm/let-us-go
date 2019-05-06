@@ -29,18 +29,19 @@ class EventPolicy < ApplicationPolicy
     end
 
     def update?
-      unless Time.now > @event.end
-        @current_user.provider?
-      end
+      true
+      # unless Time.now > @event.end
+      #   @current_user.provider?
+      # end
     end
 
     def public_event?
-      @current_user.admin?
+      @current_user.admin? or @current_user.provider?
     end
 
     def destroy?
       unless Time.now > @event.end
-        @current_user.admin?
+        @current_user.admin? or @current_user.provider?
       end
     end
 
