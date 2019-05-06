@@ -80,7 +80,7 @@
             <p>This event has ended.</p>
           <% else %>
             <% if @event.user_ids.include?(current_user.id) %>
-              <p>You have signed up for <span id="current_attendance"><%= @attendance.accompanied_number %></span> people.</p>
+              <p>You have signed up for <span id="current_attendance"><%= @attendance.adults_number %> adults and <%= @attendance.children_number %></span> children.</p>
               <%= link_to "Edit Joining", edit_event_attendance_path(@event, @attendance), :remote => true,
                 :class => "btn btn-success", 'data-toggle' => 'modal', 'data-target' => "#attend-form" %>
               <%= link_to "Don't wanna go", event_attendance_path(@event, @attendance), method: :delete,
