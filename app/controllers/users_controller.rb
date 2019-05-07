@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   def show
     authorize @user
     @random_places = Place.order("RAND()").first(3)
+    gon.events = @user.joined_events
   end
 
   # GET /users/new

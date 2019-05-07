@@ -50,12 +50,12 @@
 
           <p>
             <strong>Start:</strong>
-            <%= @event.start %>
+            <%= @event.start.strftime("%H:%M - %d/%m/%Y") %>
           </p>
 
           <p>
             <strong>End:</strong>
-            <%= @event.end %>
+            <%= @event.end.strftime("%H:%M - %d/%m/%Y") %>
           </p>
         </div>
       </div>

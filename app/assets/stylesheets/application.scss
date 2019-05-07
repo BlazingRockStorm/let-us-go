@@ -2,7 +2,6 @@
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
-*= require gijgo/css/gijgo	
  */
 
 // Custom bootstrap variables must be set or imported *before* bootstrap.
@@ -26,7 +25,7 @@
         border: solid 1px $bgDefault;
     }
     :hover{
-        background-color: $bgDefault;        
+        background-color: $bgDefault;
         a {
             color: #fff !important;
         }
@@ -34,7 +33,7 @@
 }
 
 .side-nav-click{
-    background-color: $bgDefault;        
+    background-color: $bgDefault;
     a {
         color: #fff !important;
     }
@@ -62,7 +61,7 @@ th{
     position: relative;
     overflow: hidden;
     display: inline-block;
-  
+
     input[type=file] {
         font-size: 100px;
         position: absolute;
