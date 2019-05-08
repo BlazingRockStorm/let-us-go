@@ -17,6 +17,6 @@
 //= require jquery3
 //= require popper
 //= require bootstrap
-//= require moment 
+//= require moment
 //= require fullcalendar
-//= require gijgo/js/gijgo	
+//= require gijgo/js/gijgo

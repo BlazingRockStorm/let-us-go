@@ -32,22 +32,22 @@ User.create!(
 end
 
 places = Place.create!([
-    { 
+    {
         name: "Công viên thống nhất",
         description: "Nằm tại vị trí rất đẹp, tiếp giáp giữa 4 con phố Đại Cồ Việt, Lê Duẩn, Trần Nhân Tông và Nguyễn Đình Chiểu… hoạt động chính của công viên Thống Nhất là chăm sóc vườn hoa, thảm cỏ để phục vụ nhu cầu tham quan, vui chơi giải trí, thư giãn của người dân và khách du lịch. Công viên cũng được sử dụng cho thuê tổ chức các sự kiện và cho thuê kinh doanh một số nhà hàng bên trong khuôn viên…  ",
         latitude: "21.011816",
         longitude: "105.843592",
-    }, { 
+    }, {
         name: "Rạp xiếc trung ương",
         description: "Rạp xiếc trung ương là nơi gắn rất nhiều tới kỉ niệm tuổi thơ",
         latitude: "21.017357",
         longitude: "105.842347",
-    }, { 
+    }, {
         name: "Phố đi bộ Hà Nội",
         description: "Đến thời điểm hiện tại, phố đi bộ Hà Nội quanh Hồ Gươm đã và đang dần trở thành một trong những điểm nhấn du lịch của thủ đô, là nơi để mọi người hẹn hò, vui chơi, và chậm lại giữa những con đường hối hả đông đúc.",
         latitude: "21.029914",
         longitude: "105.853507"
-    }, { 
+    }, {
         name: "Làng gốm Bát Tràng",
         description: "Làng gốm Bát Tràng nằm ở ven sông Hồng, thuộc huyện Gia Lâm ngoại thành Hà Nội. Cái tên Bát Tràng có nghĩa là “cái sân lớn”, và làng có lịch sử hình thành từ thời Lê. Đây là làng gốm lâu đời nổi tiếng nhất ở Việt Nam, cũng như là địa điểm mà du khách trong và ngoài nước không thể không một lần ghé thăm. Làng gốm Bát Tràng chuyên sản xuất những loại gốm sứ đa dạng cả về chủng loại lẫn kiểu dáng. Điều thú vị nhất khi đến Bát Tràng là các bạn có thể trực tiếp ngắm nhìn các nghệ nhân làm ra những sản phẩm gốm đầy tinh tế hay được tự tay nặn những sản phẩm theo ý thích.",
         latitude: "20.978423",
@@ -146,91 +146,91 @@ places = Place.create!([
 ])
 
 places[0].picture.attach(
-    io: File.open(Rails.root.join('app', 'assets', 'images', 'places', 'Ho_7_Mau_4.jpg')), 
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'places', 'Ho_7_Mau_4.jpg')),
     filename: 'Ho_7_Mau_4.jpg',
 )
 places[1].picture.attach(
-    io: File.open(Rails.root.join('app', 'assets', 'images', 'places', 'rap-xiec.jpeg')), 
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'places', 'rap-xiec.jpeg')),
     filename: 'rap-xiec.jpeg',
 )
 places[2].picture.attach(
-    io: File.open(Rails.root.join('app', 'assets', 'images', 'places', 'pho-di-bo-ha-noi-.jpg')), 
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'places', 'pho-di-bo-ha-noi-.jpg')),
     filename: 'pho-di-bo-ha-noi-.jpg',
 )
 places[3].picture.attach(
-    io: File.open(Rails.root.join('app', 'assets', 'images', 'places', 'du-lich-lang-gom-bat-trang-1.jpg')), 
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'places', 'du-lich-lang-gom-bat-trang-1.jpg')),
     filename: 'du-lich-lang-gom-bat-trang-1.jpg',
 )
 places[4].picture.attach(
-    io: File.open(Rails.root.join('app', 'assets', 'images', 'places', '7.jpg')), 
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'places', '7.jpg')),
     filename: '7.jpg',
 )
 places[5].picture.attach(
-    io: File.open(Rails.root.join('app', 'assets', 'images', 'places', '1.jpg')), 
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'places', '1.jpg')),
     filename: '1.jpg',
 )
 places[6].picture.attach(
-    io: File.open(Rails.root.join('app', 'assets', 'images', 'places', '2.jpg')), 
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'places', '2.jpg')),
     filename: '2.jpg',
 )
 places[7].picture.attach(
-    io: File.open(Rails.root.join('app', 'assets', 'images', 'places', '3.jpg')), 
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'places', '3.jpg')),
     filename: '3.jpg',
 )
 places[8].picture.attach(
-    io: File.open(Rails.root.join('app', 'assets', 'images', 'places', '4.jpg')), 
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'places', '4.jpg')),
     filename: '4.jpg',
 )
 places[9].picture.attach(
-    io: File.open(Rails.root.join('app', 'assets', 'images', 'places', '5.jpg')), 
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'places', '5.jpg')),
     filename: '5.jpg',
 )
 places[10].picture.attach(
-    io: File.open(Rails.root.join('app', 'assets', 'images', 'places', '8.jpg')), 
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'places', '8.jpg')),
     filename: '8.jpg',
 )
 places[11].picture.attach(
-    io: File.open(Rails.root.join('app', 'assets', 'images', 'places', '6.jpg')), 
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'places', '6.jpg')),
     filename: '6.jpg',
 )
 places[12].picture.attach(
-    io: File.open(Rails.root.join('app', 'assets', 'images', 'places', '9.jpg')), 
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'places', '9.jpg')),
     filename: '9.jpg',
 )
 places[13].picture.attach(
-    io: File.open(Rails.root.join('app', 'assets', 'images', 'places', '10.jpg')), 
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'places', '10.jpg')),
     filename: '10.jpg',
 )
 places[14].picture.attach(
-    io: File.open(Rails.root.join('app', 'assets', 'images', 'places', '11.jpg')), 
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'places', '11.jpg')),
     filename: '11.jpg',
 )
 places[15].picture.attach(
-    io: File.open(Rails.root.join('app', 'assets', 'images', 'places', '12.jpg')), 
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'places', '12.jpg')),
     filename: '12.jpg',
 )
 places[16].picture.attach(
-    io: File.open(Rails.root.join('app', 'assets', 'images', 'places', '13.jpg')), 
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'places', '13.jpg')),
     filename: '13.jpg',
 )
 places[17].picture.attach(
-    io: File.open(Rails.root.join('app', 'assets', 'images', 'places', 'dong-mo.jpg')), 
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'places', 'dong-mo.jpg')),
     filename: 'dong-mo.jpg',
 )
 places[18].picture.attach(
-    io: File.open(Rails.root.join('app', 'assets', 'images', 'places', '14.jpg')), 
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'places', '14.jpg')),
     filename: '14.jpg',
 )
 places[19].picture.attach(
-    io: File.open(Rails.root.join('app', 'assets', 'images', 'places', '15.png')), 
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'places', '15.png')),
     filename: '15.png',
 )
 places[20].picture.attach(
-    io: File.open(Rails.root.join('app', 'assets', 'images', 'places', 'bt1.jpg')), 
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'places', 'bt1.jpg')),
     filename: 'bt1.jpg',
 )
 places[21].picture.attach(
-    io: File.open(Rails.root.join('app', 'assets', 'images', 'places', 'royal-city-ice-rink.jpg')), 
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'places', 'royal-city-ice-rink.jpg')),
     filename: 'royal-city-ice-rink.jpg',
 )
 
@@ -245,112 +245,112 @@ Tag.create!([
 
 events = Event.create!([
     {
-        name: "Trải nghiệm Yosakoi", 
-        description: "Đây là sự kiện diễn ra nhằm giới thiệu cho các em thiếu nhi về 1 nét văn hoá của Nhật Bản", 
-        place_id: 3, 
+        name: "Trải nghiệm Yosakoi",
+        description: "Đây là sự kiện diễn ra nhằm giới thiệu cho các em thiếu nhi về 1 nét văn hoá của Nhật Bản",
+        place_id: 3,
         provider_id: 2,
-        start: 5.days.from_now, 
-        end: 6.days.from_now, 
+        start: 5.days.from_now,
+        end: 6.days.from_now,
         hidden_status: false,
         age_filter: 1,
         tag_ids: [1, 2, 3]
     }, {
-        name: "Dã ngoại ở công viên Thống Nhất", 
-        description: "Với cây xanh và hồ trong sạch, cùng trải nghiệm các hoạt động ngoài trời", 
-        place_id: 1, 
+        name: "Dã ngoại ở công viên Thống Nhất",
+        description: "Với cây xanh và hồ trong sạch, cùng trải nghiệm các hoạt động ngoài trời",
+        place_id: 1,
         provider_id: 2,
-        start: 5.days.from_now, 
-        end: 6.days.from_now, 
+        start: 5.days.from_now,
+        end: 6.days.from_now,
         hidden_status: false,
         age_filter: 5,
         tag_ids: [4, 5, 6]
     }, {
-        name: "Chương trình xiếc đặc biệt", 
-        description: "Chương trình có sự tham gia của rất nhiều nghệ sĩ xiếc nổi tiếng trong và ngoài nước. Giữa chương trình có các tiết mục biểu diễn hài và ca nhạc. Buổi diễn chỉ bán vé cho các gia đình có con nhỏ", 
-        place_id: 2, 
+        name: "Chương trình xiếc đặc biệt",
+        description: "Chương trình có sự tham gia của rất nhiều nghệ sĩ xiếc nổi tiếng trong và ngoài nước. Giữa chương trình có các tiết mục biểu diễn hài và ca nhạc. Buổi diễn chỉ bán vé cho các gia đình có con nhỏ",
+        place_id: 2,
         provider_id: 2,
-        start: 5.days.from_now, 
-        end: 6.days.from_now, 
+        start: 5.days.from_now,
+        end: 6.days.from_now,
         hidden_status: false,
         age_filter: 6,
         tag_ids: [3]
     }, {
-        name: "Trải nghiệm tự tay làm đồ gốm", 
-        description: "1 trong những cách sáng tạo để có thể cho trẻ nhỏ học nghệ thuật", 
-        place_id: 4, 
+        name: "Trải nghiệm tự tay làm đồ gốm",
+        description: "1 trong những cách sáng tạo để có thể cho trẻ nhỏ học nghệ thuật",
+        place_id: 4,
         provider_id: 2,
-        start: 5.days.from_now, 
-        end: 6.days.from_now, 
+        start: 5.days.from_now,
+        end: 6.days.from_now,
         hidden_status: false,
         age_filter: 5,
         tag_ids: [2]
     }, {
-        name: "Khám phá rừng Cúc Phương", 
-        description: "Dịp để các em nhỏ tìm hiểu với thiên nhiên và tham quan Cây chò ngàn năm", 
-        place_id: 11, 
+        name: "Khám phá rừng Cúc Phương",
+        description: "Dịp để các em nhỏ tìm hiểu với thiên nhiên và tham quan Cây chò ngàn năm",
+        place_id: 11,
         provider_id: 3,
-        start: 10.days.from_now, 
-        end: 12.days.from_now, 
+        start: 10.days.from_now,
+        end: 12.days.from_now,
         hidden_status: false,
         age_filter: 8,
         tag_ids: [2,4,5]
     }, {
-        name: "Làm quen với nhạc cụ dân tộc", 
-        description: "Sự kiện tổ chức nhằm cho các em thiếu nhi làm quen với các nhạc cụ dân tộc và thử 1 vài nhạc cụ", 
-        place_id: 21, 
+        name: "Làm quen với nhạc cụ dân tộc",
+        description: "Sự kiện tổ chức nhằm cho các em thiếu nhi làm quen với các nhạc cụ dân tộc và thử 1 vài nhạc cụ",
+        place_id: 21,
         provider_id: 2,
-        start: 10.days.from_now, 
-        end: 11.days.from_now, 
+        start: 10.days.from_now,
+        end: 11.days.from_now,
         hidden_status: false,
         age_filter: 8,
         tag_ids: [2,4]
     }, {
-        name: "Xem múa rối nước", 
-        description: "Sự kiện tổ chức nhằm cho các em thiếu nhi làm quen với nghệ thuật múa rối nước", 
-        place_id: 21, 
+        name: "Xem múa rối nước",
+        description: "Sự kiện tổ chức nhằm cho các em thiếu nhi làm quen với nghệ thuật múa rối nước",
+        place_id: 21,
         provider_id: 2,
-        start: 12.days.from_now, 
-        end: 13.days.from_now, 
+        start: 12.days.from_now,
+        end: 13.days.from_now,
         hidden_status: false,
         age_filter: 4,
         tag_ids: [2,4]
     }, {
-        name: "Trò chơi vận động tổng hợp", 
-        description: "Sự kiện tổ chức nhằm cho các em thiếu nhi vận động", 
-        place_id: 18, 
+        name: "Trò chơi vận động tổng hợp",
+        description: "Sự kiện tổ chức nhằm cho các em thiếu nhi vận động",
+        place_id: 18,
         provider_id: 2,
-        start: 12.days.from_now, 
-        end: 13.days.from_now, 
+        start: 12.days.from_now,
+        end: 13.days.from_now,
         hidden_status: false,
         age_filter: 4,
         tag_ids: [2]
     }, {
-        name: "Chương trình hài thiếu nhi", 
-        description: "Có sự góp mặt của các nghệ sĩ hài nổi tiếng", 
-        place_id: 5, 
+        name: "Chương trình hài thiếu nhi",
+        description: "Có sự góp mặt của các nghệ sĩ hài nổi tiếng",
+        place_id: 5,
         provider_id: 3,
-        start: 12.days.from_now, 
-        end: 13.days.from_now, 
+        start: 12.days.from_now,
+        end: 13.days.from_now,
         hidden_status: false,
         age_filter: 4,
         tag_ids: [3]
     }, {
-        name: "Chương trình ca nhạc thiếu nhi", 
-        description: "Có sự góp mặt của các ca sĩ nổi tiếng", 
-        place_id: 5, 
+        name: "Chương trình ca nhạc thiếu nhi",
+        description: "Có sự góp mặt của các ca sĩ nổi tiếng",
+        place_id: 5,
         provider_id: 2,
-        start: 7.days.from_now, 
-        end: 8.days.from_now, 
+        start: 7.days.from_now,
+        end: 8.days.from_now,
         hidden_status: false,
         age_filter: 4,
         tag_ids: [3]
     }, {
-        name: "Trò chơi vận động tổng hợp bãi biển", 
-        description: "Sự kiện tổ chức nhằm cho các em thiếu nhi vận động", 
-        place_id: 19, 
+        name: "Trò chơi vận động tổng hợp bãi biển",
+        description: "Sự kiện tổ chức nhằm cho các em thiếu nhi vận động",
+        place_id: 19,
         provider_id: 3,
-        start: 12.days.from_now, 
-        end: 13.days.from_now, 
+        start: 12.days.from_now,
+        end: 13.days.from_now,
         hidden_status: false,
         age_filter: 4,
         tag_ids: [2]
@@ -358,50 +358,50 @@ events = Event.create!([
 ])
 events[0].pictures.attach([
     {
-        io: File.open(Rails.root.join('app', 'assets', 'images', 'events', '1.jpg')), 
+        io: File.open(Rails.root.join('app', 'assets', 'images', 'events', '1.jpg')),
         filename: '1.jpg',
     }, {
-        io: File.open(Rails.root.join('app', 'assets', 'images', 'events', 'img0183-15220782296711431315793.jpg')), 
+        io: File.open(Rails.root.join('app', 'assets', 'images', 'events', 'img0183-15220782296711431315793.jpg')),
         filename: 'img0183-15220782296711431315793.jpg',
     }
 ])
 events[2].pictures.attach([
     {
-        io: File.open(Rails.root.join('app', 'assets', 'images', 'events', '3.jpg')), 
+        io: File.open(Rails.root.join('app', 'assets', 'images', 'events', '3.jpg')),
         filename: '3.jpg'
     }, {
-        io: File.open(Rails.root.join('app', 'assets', 'images', 'events', '4.jpg')), 
+        io: File.open(Rails.root.join('app', 'assets', 'images', 'events', '4.jpg')),
         filename: '4.jpg',
     }
 ])
 events[1].pictures.attach([io: File.open(Rails.root.join('app', 'assets', 'images', 'events', '2.jpg')), filename: '2.jpg'])
 events[3].pictures.attach([
     {
-        io: File.open(Rails.root.join('app', 'assets', 'images', 'events', '6.jpg')), 
+        io: File.open(Rails.root.join('app', 'assets', 'images', 'events', '6.jpg')),
         filename: '6.jpg'
     }, {
-        io: File.open(Rails.root.join('app', 'assets', 'images', 'events', '5.png')), 
+        io: File.open(Rails.root.join('app', 'assets', 'images', 'events', '5.png')),
         filename: '5.png',
     }
 ])
 events[4].pictures.attach([
     {
-        io: File.open(Rails.root.join('app', 'assets', 'images', 'events', '7.jpg')), 
+        io: File.open(Rails.root.join('app', 'assets', 'images', 'events', '7.jpg')),
         filename: '7.jpg'
     }, {
-        io: File.open(Rails.root.join('app', 'assets', 'images', 'events', '8.jpg')), 
+        io: File.open(Rails.root.join('app', 'assets', 'images', 'events', '8.jpg')),
         filename: '8.jpg',
     }
 ])
 events[5].pictures.attach([
     {
-        io: File.open(Rails.root.join('app', 'assets', 'images', 'events', '9.jpg')), 
+        io: File.open(Rails.root.join('app', 'assets', 'images', 'events', '9.jpg')),
         filename: '9.jpg'
     }, {
-        io: File.open(Rails.root.join('app', 'assets', 'images', 'events', '10.jpg')), 
+        io: File.open(Rails.root.join('app', 'assets', 'images', 'events', '10.jpg')),
         filename: '10.jpg',
     }, {
-        io: File.open(Rails.root.join('app', 'assets', 'images', 'events', '11.jpg')), 
+        io: File.open(Rails.root.join('app', 'assets', 'images', 'events', '11.jpg')),
         filename: '11.jpg',
     }
 ])
