@@ -19,4 +19,19 @@
 //= require bootstrap
 //= require moment
 //= require fullcalendar
-//= require gijgo/js/gijgo
+
+function eventCalendar() {
+  return $('#calendar').fullCalendar({
+    nextDayThreshold: '00:00:00',
+    events: gon.events
+   });
+};
+function clearCalendar() {
+  $('#calendar').fullCalendar('delete');
+  $('#calendar').html('');
+};
+
+$(document).on('turbolinks:load', function(){
+  eventCalendar();
+});
+$(document).on('turbolinks:before-cache', clearCalendar);
