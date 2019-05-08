@@ -13,7 +13,7 @@ class EventsController < ApplicationController
     authorize Event
     if current_user.admin?
       @events = Event.all
-    else 
+    else
       @events = current_user.events.all
     end
   end
@@ -24,7 +24,7 @@ class EventsController < ApplicationController
     authorize @event
     @comment = Comment.new
     @comments = @event.comments
-    @attendance = @event.attendances.find_by(user_id: current_user.id) if user_signed_in? 
+    @attendance = @event.attendances.find_by(user_id: current_user.id) if user_signed_in?
     options = { units: "metric", APPID: Rails.application.credentials.open_weather_map_api_key}
     options[:cnt] = 2
     @weathers = OpenWeather::ForecastDaily.geocode(@event.place.latitude, @event.place.longitude, options)
@@ -63,7 +63,7 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
-    authorize Event
+    authorize @event
     respond_to do |format|
       if @event.update(event_params)
         format.html { redirect_to @event, notice: 'Event was successfully updated.' }
