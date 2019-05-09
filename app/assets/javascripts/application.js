@@ -36,3 +36,38 @@ $(document).on('turbolinks:load', function(){
   eventCalendar();
 });
 $(document).on('turbolinks:before-cache', clearCalendar);
+
+$(function() {
+  var imagesPreview = function(input, placeToInsertImagePreview) {
+
+  if (input.files) {
+      var filesAmount = input.files.length;
+      // alert(filessAmount);
+          
+      for (i = 0; i < filesAmount; i++) {
+          var reader = new FileReader();
+
+          reader.onload = function(event) {
+              $($.parseHTML('<img clas="mr-2" width="150px" id="img-comment-preview"> <i class="fa fa-close" id="cancel"></i>'))
+                  .attr('src', event.target.result)
+                  .appendTo(placeToInsertImagePreview);
+          }
+
+          reader.readAsDataURL(input.files[i]);
+      }
+  }
+
+};
+
+$('#image_preview').on("click", "#cancel", function () {
+  $('#image_preview').html("");
+  $("#comment_image").val('');
+});
+
+$('#comment_image').on('change', function(e) {
+  e.preventDefault();
+  $('#image_preview').html("");
+  imagesPreview(this, '#image_preview');
+  });
+
+});
