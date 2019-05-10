@@ -13,13 +13,13 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require_tree .
 //= require jquery3
 //= require popper
 //= require bootstrap
 //= require moment
 //= require fullcalendar
 //= require gijgo/js/gijgo
+//= require_tree .
 
 function eventCalendar() {
   return $('#calendar').fullCalendar({
@@ -48,7 +48,7 @@ $(function() {
           var reader = new FileReader();
 
           reader.onload = function(event) {
-              $($.parseHTML('<img clas="mr-2" width="150px" id="img-comment-preview"> <i class="fa fa-close" id="cancel"></i>'))
+              $($.parseHTML('<img class="mr-2" width="150px" id="img-comment-preview"> <i class="fa fa-close" id="cancel"></i>'))
                   .attr('src', event.target.result)
                   .appendTo(placeToInsertImagePreview);
           }
