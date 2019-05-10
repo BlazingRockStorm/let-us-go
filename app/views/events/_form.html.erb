@@ -53,7 +53,11 @@
     <%= form.label :start, :class => "control-label col-sm-2" %>
     <div class="col-sm-10">
       <%#= form.datetime_field :start %>
-      <%= form.text_field :start, :id => "start", :class => "form-control", :autocomplete => "off", required: true, :value => event.start.strftime("%H:%M %Y-%m-%d") %>
+      <% if current_page?(new_event_path) %>
+        <%= form.text_field :start, :id => "start", :class => "form-control", :autocomplete => "off", required: true %>
+      <% else %>
+        <%= form.text_field :start, :id => "start", :class => "form-control", :autocomplete => "off", required: true, :value => event.start.strftime("%H:%M %Y-%m-%d") %>
+      <% end %>
     </div>
   </div>
 
@@ -61,7 +65,11 @@
     <%= form.label :end, :class => "control-label col-sm-2" %>
     <div class="col-sm-10">
       <%#= form.datetime_field :end %>
-      <%= form.text_field :end, :id => "end", :class => "form-control", :autocomplete => "off", required: true, :value => event.end.strftime("%H:%M %Y-%m-%d") %>
+      <% if current_page?(new_event_path) %>
+        <%= form.text_field :end, :id => "end", :class => "form-control", :autocomplete => "off", required: true %>
+      <% else %>
+        <%= form.text_field :end, :id => "end", :class => "form-control", :autocomplete => "off", required: true, :value => event.end.strftime("%H:%M %Y-%m-%d") %>
+      <% end %>
     </div>
   </div>
 
