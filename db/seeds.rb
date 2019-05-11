@@ -234,7 +234,7 @@ places[21].picture.attach(
     filename: 'royal-city-ice-rink.jpg',
 )
 
-Tag.create!([
+tags = Tag.create!([
     {name: "yosakoi"},
     {name: "Trải nghiệm"},
     {name: "Buổi biểu diễn"},
@@ -427,3 +427,15 @@ end
         children_number: rand(1..5),
     )
 end
+
+recommender = EventRecommender.new
+
+Event.all.each do |event|
+    Tag.all.each do |tag|
+        recommender.add_to_matrix!(:tags, tag, event)
+    end
+    Place.all.each do |place|
+        recommender.add_to_matrix!(:places, place, event)
+    end
+end
+recommender.process!
