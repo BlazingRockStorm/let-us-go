@@ -1,0 +1,17 @@
+<p>Kính thưa <%= @user.name %>,</p>
+
+<p>Chúng tôi xin gửi mail thông báo cho anh/chị rằng sự kiện <%= @event.name %> đã có sự thay đổi.</p> 
+
+<p>Cụ thể thì thời gian/địa điểm/tên của sự kiện đã thay đổi thành:</p> 
+<ul>
+  <li>Tên: <%= @event.name %></li>
+  <li>Mô tả: <%= @event.description %></li>
+  <li>Địa điểm: <%= @event.place.name %></li>
+  <li>Bắt đầu: <%= @event.start.strftime("%H:%M - %d/%m/%Y") %></li>
+  <li>Kết thúc: <%= @event.end.strftime("%H:%M - %d/%m/%Y") %></li>
+</ul>
+<p>Thông tin chi tiết về sự kiện tại <%= link_to "đây", event_url(@event) %></p>
+<p>Nếu có thắc mắc, xin vui lòng liên hệ tới địa chỉ email của Nhà tổ chức sự kiện <%= @event.provider.email %> hoặc admin của hệ thống <%= User.admin.first.email %>.</p>
+
+Chúng tôi thực sự xin lỗi vì sự bất tiện trên
+<p><%= @event.provider.name %></p>

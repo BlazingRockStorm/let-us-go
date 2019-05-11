@@ -68,6 +68,10 @@ class EventsController < ApplicationController
       if @event.update(event_params)
         format.html { redirect_to @event, notice: 'Event was successfully updated.' }
         format.json { render :show, status: :ok, location: @event }
+        UserMailer.edit_event(@event.provider, @event).deliver
+        @event.users.each do |user|
+          UserMailer.edit_event(user, @event).deliver
+        end
       else
         format.html { render :edit }
         format.json { render json: @event.errors, status: :unprocessable_entity }
@@ -88,6 +92,10 @@ class EventsController < ApplicationController
   # DELETE /events/1.json
   def destroy
     authorize @event
+    UserMailer.delete_event(@event.provider, @event).deliver
+    @event.users.each do |user|
+      UserMailer.delete_event(user, @event).deliver
+    end
     @event.destroy
     respond_to do |format|
       format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
