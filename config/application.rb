@@ -20,13 +20,12 @@ module LetUsGo
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.default_url_options = {host: "localhost", port: 3000}
     config.action_mailer.smtp_settings = {
-      address:              "smtp.gmail.com",
-      port:                 587,
-      domain:               "google.com",
-      user_name:            "awesome.academy.test@gmail.com",
-      password:             "Aa@123456",
-      authentication:       'plain',
-      enable_starttls_auto: true
+      :user_name => 'a13332922052ca',
+      :password => '9be9e1cd3d7aff',
+      :address => 'smtp.mailtrap.io',
+      :domain => 'smtp.mailtrap.io',
+      :port => '2525',
+      :authentication => :cram_md5
     }
     config.action_view.field_error_proc = Proc.new { |html_tag, instance| 
       html_tag
