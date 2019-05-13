@@ -53,6 +53,7 @@ gem 'search_cop'
 # Paginate
 gem 'kaminari'
 gem 'bootstrap4-kaminari-views'
+gem 'predictor'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
