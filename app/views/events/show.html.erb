@@ -65,6 +65,10 @@
         <%= @event.description %>
       </p>
 
+      <% @ids.each do |id| %>
+        <%= Event.find(id).name %>
+      <% end %>
+      
       <% if user_signed_in? %>
         <% if current_user.provider? %>
           <% if Time.now > @event.end %>
