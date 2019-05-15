@@ -44,4 +44,12 @@ class Event < ApplicationRecord
             url: "/events/#{id}"
         }
     end
+
+    after_commit ->(event) do
+        EventRecommender.add_event(event)
+    end, if: :persisted?
+    
+    after_commit ->(product) do
+        EventRecommender.delete_event(event)
+    end, on: :destroy
 end
