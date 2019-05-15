@@ -12,7 +12,7 @@ class EventRecommender
 
     def self.add_event(event)
         # incrementally update age matrix
-        instance.age.add_to_set(event.age, event.id)
+        instance.age.add_to_set(event.age_filter, event.id)
         # incrementally update place matrix
         instance.place.add_to_set(event.place.id, event.id)
         # incrementally update provider matrix

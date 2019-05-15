@@ -1,2 +1,2 @@
-Predictor.redis = Redis.new(:url => ENV["REDIS_URL"])
+Predictor.redis = Redis.new(:url => 'redis://redis:6379')
 # Predictor.redis = Redis.new

@@ -427,15 +427,3 @@ end
         children_number: rand(1..5),
     )
 end
-
-recommender = EventRecommender.new
-
-Event.all.each do |event|
-    Tag.all.each do |tag|
-        recommender.add_to_matrix!(:tags, tag, event)
-    end
-    Place.all.each do |place|
-        recommender.add_to_matrix!(:places, place, event)
-    end
-end
-recommender.process!
