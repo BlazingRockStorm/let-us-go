@@ -29,7 +29,7 @@
               <div class="col-md-8">
                 <%= link_to content_tag(:h5, event.name, :class => "card-title"), event_path(event)%>
                 
-                <h6 class="card-subtitle mb-2 text-muted"><%= event.place.name %></h6>
+                <h6 class="card-subtitle mb-2 text-muted"><%= fa_icon "map-marker" %> <%= event.place.name %></h6>
                 <p class="card-text">
                   <strong><%= fa_icon "tags" %></strong>
                   <%=raw tag_links(event.all_tags)%>

@@ -234,7 +234,7 @@ places[21].picture.attach(
     filename: 'royal-city-ice-rink.jpg',
 )
 
-Tag.create!([
+tags = Tag.create!([
     {name: "yosakoi"},
     {name: "Trải nghiệm"},
     {name: "Buổi biểu diễn"},

@@ -1,4 +1,5 @@
 require 'open_weather'
+require 'event_recommender'
 
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy, :public_event]
@@ -29,6 +30,10 @@ class EventsController < ApplicationController
     options[:cnt] = 2
     @weathers = OpenWeather::ForecastDaily.geocode(@event.place.latitude, @event.place.longitude, options)
     @random_places = Place.order("RAND()").first(3)
+    # byebug
+
+    @ids = EventRecommender.instance.similarities_for(@event.id)
+    
   end
 
   # GET /events/new

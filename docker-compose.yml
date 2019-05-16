@@ -9,9 +9,18 @@ services:
     env_file:
       - .env.development
 
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - db-data:/var/lib/redis
+    env_file:
+      - .env.development
+
   web:
     build: .
-    command: /bin/sh -c "bundle exec rails server -e production -p 3000"
+    command: /bin/sh -c "bundle exec rails server -e production -p 3000" 
     ports:
       - "3000:3000"
     volumes:
@@ -22,6 +31,7 @@ services:
       - .env.development
     depends_on:
       - db
+      - redis
     restart: always
 
 volumes:
