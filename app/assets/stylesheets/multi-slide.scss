@@ -1,0 +1,35 @@
+.MultiCarousel {
+    float: left;
+    overflow: hidden;
+    padding: 15px;
+    width: 100%;
+    position: relative;
+    .MultiCarousel-inner {
+      transition: 1s ease all;
+      float: left;
+      .item {
+        float: left;
+        > div {
+          padding: 10px;
+          margin: 10px;
+          background: #f1f1f1;
+          color: #666;
+        }
+      }
+    }
+    .leftLst, .rightLst {
+      position: absolute;
+      border-radius: 50%;
+      top: calc(50% - 20px);
+    }
+    .leftLst {
+      left: 0;
+    }
+    .rightLst {
+      right: 0;
+    }
+    .leftLst.over, .rightLst.over {
+      pointer-events: none;
+      background: #ccc;
+    }
+  }

@@ -19,3 +19,21 @@
     right: 5px;
     top: 7px;
 }
+.similar-first-picture {
+    height: 180px;
+    img {
+        width: 100%;
+        max-height:100%;
+        top: 0;  
+        bottom: 0;  
+        left: 0;  
+        right: 0;  
+        margin: auto;
+    }
+}
+.similar {
+    white-space: nowrap;
+    width: 200px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
