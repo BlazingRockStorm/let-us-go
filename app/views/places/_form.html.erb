@@ -35,7 +35,9 @@
   <div class="form-group row">
     <%= form.label :picture, :class => "control-label col-sm-2" %>
     <div class="col-sm-10">
-      <%= form.file_field :picture %>
+      <%= image_tag form.object.picture if form.object.picture.attached? %>
+      <%= form.file_field :picture, :id => "comment_image" %>
+      <div id="image_preview"></div>
     </div>
   </div>
 

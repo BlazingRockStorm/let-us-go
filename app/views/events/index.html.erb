@@ -1,7 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <div class="row">
-    <%= render('layouts/adminsidenav') %>
+    <% if current_user.admin? %>
+      <%= render('layouts/adminsidenav') %>
+    <% else %>
+      <%= render('layouts/providersidenav') %>
+    <% end %>
     <div class="col-md-9">
       <h1>Events</h1>
 

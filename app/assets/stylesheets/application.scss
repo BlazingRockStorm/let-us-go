@@ -2,7 +2,7 @@
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
-*= require gijgo/css/gijgo	
+ *= require gijgo/css/gijgo
  */
 
 // Custom bootstrap variables must be set or imported *before* bootstrap.
@@ -16,6 +16,7 @@
 @import "comments";
 @import "places";
 @import "users";
+@import "multi-slide";
 
 .body{
     min-height: 600px;
@@ -25,16 +26,10 @@
     li{
         border: solid 1px $bgDefault;
     }
-    :hover{
-        background-color: $bgDefault;        
-        a {
-            color: #fff !important;
-        }
-    }
 }
 
 .side-nav-click{
-    background-color: $bgDefault;        
+    background-color: $bgDefault;
     a {
         color: #fff !important;
     }
@@ -62,12 +57,19 @@ th{
     position: relative;
     overflow: hidden;
     display: inline-block;
-  
+
     input[type=file] {
         font-size: 100px;
         position: absolute;
         left: 0;
         top: 0;
         opacity: 0;
+    }
+}
+.btn-google {
+    color: #fff;
+    background-color: #1A73E8;
+    img{
+        margin: -4px -13px -3px -8px;
     }
 }

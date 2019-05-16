@@ -53,6 +53,7 @@ gem 'search_cop'
 # Paginate
 gem 'kaminari'
 gem 'bootstrap4-kaminari-views'
+gem 'predictor'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
@@ -62,7 +63,7 @@ gem 'bootstrap4-kaminari-views'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
-
+gem 'gon'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

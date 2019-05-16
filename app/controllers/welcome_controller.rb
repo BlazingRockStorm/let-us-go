@@ -9,6 +9,8 @@ class WelcomeController < ApplicationController
       @events_found = @events.count
       @places = Place.search(params[:search])
       @places_found = @places.count
+    elsif params[:age]
+      @events = Event.by_hidden_status().where(age_filter: params[:age]).page params[:page]
     else
       @events = Event.by_hidden_status().page params[:page]
     end

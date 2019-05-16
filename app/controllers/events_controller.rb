@@ -1,4 +1,5 @@
 require 'open_weather'
+require 'event_recommender'
 
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy, :public_event]
@@ -13,7 +14,7 @@ class EventsController < ApplicationController
     authorize Event
     if current_user.admin?
       @events = Event.all
-    else 
+    else
       @events = current_user.events.all
     end
   end
@@ -24,11 +25,15 @@ class EventsController < ApplicationController
     authorize @event
     @comment = Comment.new
     @comments = @event.comments
-    @attendance = @event.attendances.find_by(user_id: current_user.id) if user_signed_in? 
+    @attendance = @event.attendances.find_by(user_id: current_user.id) if user_signed_in?
     options = { units: "metric", APPID: Rails.application.credentials.open_weather_map_api_key}
     options[:cnt] = 2
     @weathers = OpenWeather::ForecastDaily.geocode(@event.place.latitude, @event.place.longitude, options)
     @random_places = Place.order("RAND()").first(3)
+    # byebug
+
+    @ids = EventRecommender.instance.similarities_for(@event.id)
+    
   end
 
   # GET /events/new
@@ -63,11 +68,15 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
-    authorize Event
+    authorize @event
     respond_to do |format|
       if @event.update(event_params)
         format.html { redirect_to @event, notice: 'Event was successfully updated.' }
         format.json { render :show, status: :ok, location: @event }
+        UserMailer.edit_event(@event.provider, @event).deliver
+        @event.users.each do |user|
+          UserMailer.edit_event(user, @event).deliver
+        end
       else
         format.html { render :edit }
         format.json { render json: @event.errors, status: :unprocessable_entity }
@@ -88,6 +97,10 @@ class EventsController < ApplicationController
   # DELETE /events/1.json
   def destroy
     authorize @event
+    UserMailer.delete_event(@event.provider, @event).deliver
+    @event.users.each do |user|
+      UserMailer.delete_event(user, @event).deliver
+    end
     @event.destroy
     respond_to do |format|
       format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }

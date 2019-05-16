@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'all_places' => 'welcome#place_index', as: 'home_places'
   get 'terms' => 'welcome#terms', as: 'terms'
   get 'tags/:tag', to: 'welcome#index', as: "tag"
+  get 'age/:age' => 'welcome#index', as: 'age'
 
   # resources :comments
   devise_for :users, controllers: {

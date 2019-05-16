@@ -15,6 +15,18 @@ module LetUsGo
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+    config.action_mailer.perform_deliveries = true
+    config.action_mailer.raise_delivery_errors = true
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.default_url_options = {host: "localhost", port: 3000}
+    config.action_mailer.smtp_settings = {
+      :user_name => 'a13332922052ca',
+      :password => '9be9e1cd3d7aff',
+      :address => 'smtp.mailtrap.io',
+      :domain => 'smtp.mailtrap.io',
+      :port => '2525',
+      :authentication => :cram_md5
+    }
     config.action_view.field_error_proc = Proc.new { |html_tag, instance| 
       html_tag
     }

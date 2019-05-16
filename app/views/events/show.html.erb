@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-md-6">
           <% if @event.pictures.attached? %>
-            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div id="carouselEventShowControls" class="carousel slide" data-ride="carousel">
               <div class="carousel-inner">
                 <div class="carousel-item active image-slide-size">
                   <%= image_tag(@event.pictures.first, :alt => "Event picture", :class => "event-pictures") %>
@@ -15,11 +15,11 @@
                   </div>
                 <% end %>
               </div>
-              <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+              <a class="carousel-control-prev" href="#carouselEventShowControls" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
               </a>
-              <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+              <a class="carousel-control-next" href="#carouselEventShowControls" role="button" data-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
               </a>
@@ -49,13 +49,18 @@
           </p>
 
           <p>
+            <strong>Suitable for:</strong>
+            <%= @event.age_filter %> years old
+          </p>
+
+          <p>
             <strong>Start:</strong>
-            <%= @event.start %>
+            <%= @event.start.strftime("%H:%M - %d/%m/%Y") %>
           </p>
 
           <p>
             <strong>End:</strong>
-            <%= @event.end %>
+            <%= @event.end.strftime("%H:%M - %d/%m/%Y") %>
           </p>
         </div>
       </div>
@@ -64,32 +69,78 @@
         <strong>Description:</strong>
         <%= @event.description %>
       </p>
-
+      <div class="row">
+        <h5>Similar Events</h5>
+        <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="similar-event"  data-interval="1000">
+                <div class="MultiCarousel-inner">
+                  <% @ids.each do |id| %> 
+                    <% event=Event.find(id) %>
+                    <div class="item">
+                        <div class="pad15">
+                          <div class="similar-first-picture">
+                            <%= image_tag(event.pictures.first, :alt => "Event picture", :class => "events-list-picture") if event.pictures.attached? %>
+                            <%= image_tag(image_url("blank.jpg"), :alt => "Event picture", :class => "events-list-picture") if event.pictures.attached? == false %>
+                          </div>
+                          <p class="similar"><%= link_to event.name, event_path(event) %></p>
+                          <p class="similar"><%= fa_icon "map-marker" %> <%= event.place.name %></p>
+                          <p class="similar">
+                            <strong><%= fa_icon "tags" %></strong>
+                            <%= event.all_tags %>
+                          </p>
+                          <p class="similar">Suitable for: <%= event.age_filter %> years old</p>
+                        </div>
+                    </div>
+                  <% end %>
+                </div>
+                <button class="btn btn-primary leftLst"><</button>
+                <button class="btn btn-primary rightLst">></button>
+            </div>
+      </div>
+      
       <% if user_signed_in? %>
         <% if current_user.provider? %>
           <% if Time.now > @event.end %>
-            <p>This event has ended.</p>
+            <div class="card mb-2">
+              <div class="card-body">
+                This event has ended.
+                <%= link_to 'Back', "javascript: history.go(-1)", :class => "btn btn-secondary" %>
+              </div>
+            </div>
           <% else %>
             <%= link_to 'Edit', edit_event_path(@event), :class => "btn btn-primary" %> 
+            <%= link_to 'Back', "javascript: history.go(-1)", :class => "btn btn-secondary" %>
           <% end %>
-          <%= link_to 'Back', "javascript: history.go(-1)", :class => "btn btn-secondary" %>
         <% elsif current_user.admin? %>
           <%= link_to 'Back', "javascript: history.go(-1)", :class => "btn btn-secondary" %>
         <% else %>
           <% if Time.now > @event.end %>
-            <p>This event has ended.</p>
+            <div class="card mb-2">
+              <div class="card-body">
+                This event has ended.
+              </div>
+            </div>
           <% else %>
             <% if @event.user_ids.include?(current_user.id) %>
-              <p>You have signed up for <span id="current_attendance"><%= @attendance.adults_number %> adults and <%= @attendance.children_number %></span> children.</p>
-              <%= link_to "Edit Joining", edit_event_attendance_path(@event, @attendance), :remote => true,
-                :class => "btn btn-success", 'data-toggle' => 'modal', 'data-target' => "#attend-form" %>
-              <%= link_to "Don't wanna go", event_attendance_path(@event, @attendance), method: :delete,
-                data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
+              <div class="card mb-2">
+                <div class="card-body">
+                  <p>You have signed up for <span id="current_attendance"><%= @attendance.adults_number %> adults and <%= @attendance.children_number %></span> children.</p>
+                  <%= link_to "Edit Joining", edit_event_attendance_path(@event, @attendance), :remote => true,
+                    :class => "btn btn-success", 'data-toggle' => 'modal', 'data-target' => "#attend-form" %>
+                  <%= link_to "Cancel Joining", event_attendance_path(@event, @attendance), method: :delete,
+                  data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
+                   <%= link_to 'Back', "javascript: history.go(-1)", :class => "btn btn-secondary" %>
+                </div>
+              </div>
             <% else %>
-              <p id="join_event">Do you want to register for the event?</p>
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#attend-form" id="create-join">
-                Join
-              </button>
+              <div class="card mb-2">
+                <div class="card-body">
+                  <p id="join_event">Do you want to register for the event?</p>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#attend-form" id="create-join">
+                    Join
+                  </button>
+                  <%= link_to 'Back', "javascript: history.go(-1)", :class => "btn btn-secondary" %>
+                </div>
+              </div>
             <% end %>
             <div class="modal fade" id="attend-form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
@@ -97,14 +148,17 @@
               </div>
             </div>
           <% end %>
-          <%= link_to 'Back', "javascript: history.go(-1)", :class => "btn btn-secondary" %>
           <div class="comment-form mt-2">
             <%= render partial: "comments/form", locals: { event: @event, comment: @comment } %>
           </div>
 
         <% end %>
       <% else %>
-        <p>Sign in to comment</p>
+        <div class="card mb-2">
+          <div class="card-body">
+            Sign in to comment
+          </div>
+        </div>
       <% end %>
       <div class="comments-list mt-2">
         <%= render partial: "comments/index",  collection: @event.comments, as: "comment" %>
