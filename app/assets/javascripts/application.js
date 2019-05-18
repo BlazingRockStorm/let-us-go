@@ -15,6 +15,7 @@
 //= require jquery3
 //= require popper
 //= require bootstrap
+//= require turbolinks
 //= require moment
 //= require fullcalendar
 //= require gijgo/js/gijgo
@@ -36,7 +37,7 @@ $(document).on('turbolinks:load', function(){
 });
 $(document).on('turbolinks:before-cache', clearCalendar);
 
-$(function() {
+$(document).on('turbolinks:load', function() {
   var imagesPreview = function(input, placeToInsertImagePreview) {
 
   if (input.files) {
