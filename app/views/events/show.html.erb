@@ -75,21 +75,23 @@
                 <div class="MultiCarousel-inner">
                   <% @ids.each do |id| %> 
                     <% event=Event.find(id) %>
-                    <div class="item">
-                        <div class="pad15">
-                          <div class="similar-first-picture">
-                            <%= image_tag(event.pictures.first, :alt => "Event picture", :class => "events-list-picture") if event.pictures.attached? %>
-                            <%= image_tag(image_url("blank.jpg"), :alt => "Event picture", :class => "events-list-picture") if event.pictures.attached? == false %>
+                    <% if event.hidden_status == false %>
+                      <div class="item">
+                          <div class="pad15">
+                            <div class="similar-first-picture">
+                              <%= image_tag(event.pictures.first, :alt => "Event picture", :class => "events-list-picture") if event.pictures.attached? %>
+                              <%= image_tag(image_url("blank.jpg"), :alt => "Event picture", :class => "events-list-picture") if event.pictures.attached? == false %>
+                            </div>
+                            <p class="similar"><%= link_to event.name, event_path(event) %></p>
+                            <p class="similar"><%= fa_icon "map-marker" %> <%= event.place.name %></p>
+                            <p class="similar">
+                              <strong><%= fa_icon "tags" %></strong>
+                              <%= event.all_tags %>
+                            </p>
+                            <p class="similar">Suitable for: <%= event.age_filter %> years old</p>
                           </div>
-                          <p class="similar"><%= link_to event.name, event_path(event) %></p>
-                          <p class="similar"><%= fa_icon "map-marker" %> <%= event.place.name %></p>
-                          <p class="similar">
-                            <strong><%= fa_icon "tags" %></strong>
-                            <%= event.all_tags %>
-                          </p>
-                          <p class="similar">Suitable for: <%= event.age_filter %> years old</p>
-                        </div>
-                    </div>
+                      </div>
+                    <% end %>
                   <% end %>
                 </div>
                 <button class="btn btn-primary leftLst"><</button>
