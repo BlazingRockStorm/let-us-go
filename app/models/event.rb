@@ -51,7 +51,7 @@ class Event < ApplicationRecord
         EventRecommender.add_event(event)
     end, if: :persisted?
     
-    after_commit ->(product) do
+    after_commit ->(event) do
         EventRecommender.delete_event(event)
     end, on: :destroy
 end
