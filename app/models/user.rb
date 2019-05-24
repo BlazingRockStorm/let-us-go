@@ -5,7 +5,6 @@ class User < ApplicationRecord
   enum role: [:user, :provider, :admin]
   after_initialize :set_default_role, :if => :new_record?
   has_one_attached :avatar
-  has_many :events, class_name: "Event", foreign_key: "provider_id"
 
   def set_default_role
     self.role ||= :user
