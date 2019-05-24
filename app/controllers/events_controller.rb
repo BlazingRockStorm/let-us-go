@@ -73,10 +73,6 @@ class EventsController < ApplicationController
       if @event.update(event_params)
         format.html { redirect_to @event, notice: 'Event was successfully updated.' }
         format.json { render :show, status: :ok, location: @event }
-        UserMailer.edit_event(@event.provider, @event).deliver
-        @event.users.each do |user|
-          UserMailer.edit_event(user, @event).deliver
-        end
       else
         format.html { render :edit }
         format.json { render json: @event.errors, status: :unprocessable_entity }
@@ -97,10 +93,6 @@ class EventsController < ApplicationController
   # DELETE /events/1.json
   def destroy
     authorize @event
-    UserMailer.delete_event(@event.provider, @event).deliver
-    @event.users.each do |user|
-      UserMailer.delete_event(user, @event).deliver
-    end
     @event.destroy
     respond_to do |format|
       format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
@@ -116,8 +108,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params[:event][:start] = params[:event][:start].to_datetime
-      params[:event][:end] = params[:event][:end].to_datetime
-      params.require(:event).permit(:name, :description, :place_id, :provider_id, :start, :end, :age_filter, :all_tags, pictures: [])
+      params.require(:event).permit(:name, :description, :place_id, :start, :end, :age_filter, :sex_status, :indoor_status, :adult_price, :child_price, :all_tags, pictures: [])
     end
 end

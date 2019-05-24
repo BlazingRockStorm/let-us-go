@@ -10,8 +10,6 @@
       </ul>
     </div>
   <% end %>
-  
-  <%= form.hidden_field :provider_id, value: current_user.id %>
 
   <div class="form-group row">
     <%= form.label :name, :class => "control-label col-sm-2" %>
@@ -50,26 +48,43 @@
   </div>
 
   <div class="form-group row">
-    <%= form.label :start, :class => "control-label col-sm-2" %>
-    <div class="col-sm-10">
-      <%#= form.datetime_field :start %>
-      <% if current_page?(new_event_path) %>
-        <%= form.text_field :start, :id => "start", :class => "form-control", :autocomplete => "off", required: true %>
-      <% else %>
-        <%= form.text_field :start, :id => "start", :class => "form-control", :autocomplete => "off", required: true, :value => event.start.strftime("%H:%M %Y-%m-%d") %>
-      <% end %>
+    <%= form.label "Towards", class: "col-md-3 col-form-label" %>
+    <div class="col-md-2">
+      <%= form.radio_button :sex_status, 'Boy' %>
+      <%= label :sex_status, 'Boy' %>
+    </div>
+    <div class="col-md-2">
+      <%= form.radio_button :sex_status, 'Girl' %>
+      <%= label :sex_status, 'Girl' %> 
+    </div>
+    <div class="col-md-3">
+      <%= form.radio_button :sex_status, 'Boy & Girl' %>
+      <%= label :sex_status, 'Boy & Girl' %> 
+    </div>
+  </div>
+
+<div class="form-group row">
+    <div class="offset-md-3 col-md-3">
+      <%= form.radio_button :indoor_status, 'Indoor' %>
+      <%= label :indoor_status, 'Indoor' %>
+    </div>
+    <div class="col-md-3">
+      <%= form.radio_button :indoor_status, 'Outdoor' %>
+      <%= label :indoor_status, 'Outdoor' %> 
     </div>
   </div>
 
   <div class="form-group row">
-    <%= form.label :end, :class => "control-label col-sm-2" %>
+    <%= form.label "Adult's price", :class => "control-label col-sm-2" %>
     <div class="col-sm-10">
-      <%#= form.datetime_field :end %>
-      <% if current_page?(new_event_path) %>
-        <%= form.text_field :end, :id => "end", :class => "form-control", :autocomplete => "off", required: true %>
-      <% else %>
-        <%= form.text_field :end, :id => "end", :class => "form-control", :autocomplete => "off", required: true, :value => event.end.strftime("%H:%M %Y-%m-%d") %>
-      <% end %>
+      <%= form.number_field :adult_price, :class => "form-control", :min => 50000, required: true %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= form.label "Child's price", :class => "control-label col-sm-2" %>
+    <div class="col-sm-10">
+      <%= form.number_field :child_price, :class => "form-control", :min => 50000, required: true %>
     </div>
   </div>
 
@@ -86,26 +101,3 @@
     </div>
   </div>
 <% end %>
-
-<script>
-  $('#start').datetimepicker({ 
-    footer: true,
-    format: 'HH:MM yyyy-mm-dd',
-    datepicker: { 
-      minDate: function() {
-        var date = new Date();
-        return new Date(date.getFullYear(), date.getMonth(), date.getDate());
-      }
-    }
-  });
-  $('#end').datetimepicker({ 
-    footer: true,
-    format: 'HH:MM yyyy-mm-dd',
-    datepicker: { 
-      minDate: function() {
-        var date = new Date();
-        return new Date(date.getFullYear(), date.getMonth(), date.getDate());
-      }
-    }
-  });
-</script>
