@@ -11,7 +11,7 @@
   <li>Kết thúc: <%= @event.end.strftime("%H:%M - %d/%m/%Y") %></li>
 </ul>
 <p>Thông tin chi tiết về sự kiện tại <%= link_to "đây", event_url(@event) %></p>
-<p>Nếu có thắc mắc, xin vui lòng liên hệ tới địa chỉ email của Nhà tổ chức sự kiện <%= @event.provider.email %> hoặc admin của hệ thống <%= User.admin.first.email %>.</p>
+<p>Nếu có thắc mắc, xin vui lòng liên hệ tới địa chỉ email của Nhà tổ chức sự kiện <%#= @event.organizer.email %> hoặc admin của hệ thống <%= User.admin.first.email %>.</p>
 
 Chúng tôi thực sự xin lỗi vì sự bất tiện trên
-<p><%= @event.provider.name %></p>
+<p><%#= @event.organizer.name %></p>

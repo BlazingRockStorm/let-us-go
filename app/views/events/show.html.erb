@@ -103,7 +103,7 @@
       </div>
       
       <% if user_signed_in? %>
-        <% if current_user.provider? or current_user.admin? %>
+        <% if current_user.organizer? or current_user.admin? %>
             <%= link_to 'Edit', edit_event_path(@event), :class => "btn btn-primary" %> 
             <%= link_to 'Back', "javascript: history.go(-1)", :class => "btn btn-secondary" %>
         <% else %>

@@ -7,8 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create!(name: "Admin", address: "Shinagawa-ku, Tokyo", gender: Faker::Gender.binary_type, phone: Faker::PhoneNumber.phone_number, email: "admin@email.com", password: "123456", role: "admin")
-User.create!(name: "Provider 1", address: "Hanoi", gender: Faker::Gender.binary_type, phone: Faker::PhoneNumber.phone_number, email: "provider1@email.com", password: "123456", role: "provider")
-User.create!(name: "Provider 2", address: "Hanoi", gender: Faker::Gender.binary_type, phone: Faker::PhoneNumber.phone_number, email: "provider2@email.com", password: "123456", role: "provider")
+User.create!(name: "organizer 1", address: "Hanoi", gender: Faker::Gender.binary_type, phone: Faker::PhoneNumber.phone_number, email: "organizer1@email.com", password: "123456", role: "organizer")
+User.create!(name: "organizer 2", address: "Hanoi", gender: Faker::Gender.binary_type, phone: Faker::PhoneNumber.phone_number, email: "organizer2@email.com", password: "123456", role: "organizer")
 User.create!(
     name: Faker::Name.name,
     address: Faker::Address.full_address,
@@ -248,7 +248,6 @@ events = Event.create!([
         name: "Trải nghiệm Yosakoi",
         description: "Đây là sự kiện diễn ra nhằm giới thiệu cho các em thiếu nhi về 1 nét văn hoá của Nhật Bản",
         place_id: 3,
-        provider_id: 2,
         start: 5.days.from_now,
         end: 6.days.from_now,
         hidden_status: false,
@@ -258,7 +257,6 @@ events = Event.create!([
         name: "Dã ngoại ở công viên Thống Nhất",
         description: "Với cây xanh và hồ trong sạch, cùng trải nghiệm các hoạt động ngoài trời",
         place_id: 1,
-        provider_id: 2,
         start: 5.days.from_now,
         end: 6.days.from_now,
         hidden_status: false,
@@ -268,7 +266,6 @@ events = Event.create!([
         name: "Chương trình xiếc đặc biệt",
         description: "Chương trình có sự tham gia của rất nhiều nghệ sĩ xiếc nổi tiếng trong và ngoài nước. Giữa chương trình có các tiết mục biểu diễn hài và ca nhạc. Buổi diễn chỉ bán vé cho các gia đình có con nhỏ",
         place_id: 2,
-        provider_id: 2,
         start: 5.days.from_now,
         end: 6.days.from_now,
         hidden_status: false,
@@ -278,7 +275,6 @@ events = Event.create!([
         name: "Trải nghiệm tự tay làm đồ gốm",
         description: "1 trong những cách sáng tạo để có thể cho trẻ nhỏ học nghệ thuật",
         place_id: 4,
-        provider_id: 2,
         start: 5.days.from_now,
         end: 6.days.from_now,
         hidden_status: false,
@@ -288,7 +284,6 @@ events = Event.create!([
         name: "Khám phá rừng Cúc Phương",
         description: "Dịp để các em nhỏ tìm hiểu với thiên nhiên và tham quan Cây chò ngàn năm",
         place_id: 11,
-        provider_id: 3,
         start: 10.days.from_now,
         end: 12.days.from_now,
         hidden_status: false,
@@ -298,7 +293,6 @@ events = Event.create!([
         name: "Làm quen với nhạc cụ dân tộc",
         description: "Sự kiện tổ chức nhằm cho các em thiếu nhi làm quen với các nhạc cụ dân tộc và thử 1 vài nhạc cụ",
         place_id: 21,
-        provider_id: 2,
         start: 10.days.from_now,
         end: 11.days.from_now,
         hidden_status: false,
@@ -308,7 +302,6 @@ events = Event.create!([
         name: "Xem múa rối nước",
         description: "Sự kiện tổ chức nhằm cho các em thiếu nhi làm quen với nghệ thuật múa rối nước",
         place_id: 21,
-        provider_id: 2,
         start: 12.days.from_now,
         end: 13.days.from_now,
         hidden_status: false,
@@ -318,7 +311,6 @@ events = Event.create!([
         name: "Trò chơi vận động tổng hợp",
         description: "Sự kiện tổ chức nhằm cho các em thiếu nhi vận động",
         place_id: 18,
-        provider_id: 2,
         start: 12.days.from_now,
         end: 13.days.from_now,
         hidden_status: false,
@@ -328,7 +320,6 @@ events = Event.create!([
         name: "Chương trình hài thiếu nhi",
         description: "Có sự góp mặt của các nghệ sĩ hài nổi tiếng",
         place_id: 5,
-        provider_id: 3,
         start: 12.days.from_now,
         end: 13.days.from_now,
         hidden_status: false,
@@ -338,7 +329,6 @@ events = Event.create!([
         name: "Chương trình ca nhạc thiếu nhi",
         description: "Có sự góp mặt của các ca sĩ nổi tiếng",
         place_id: 5,
-        provider_id: 2,
         start: 7.days.from_now,
         end: 8.days.from_now,
         hidden_status: false,
@@ -348,7 +338,6 @@ events = Event.create!([
         name: "Trò chơi vận động tổng hợp bãi biển",
         description: "Sự kiện tổ chức nhằm cho các em thiếu nhi vận động",
         place_id: 19,
-        provider_id: 3,
         start: 12.days.from_now,
         end: 13.days.from_now,
         hidden_status: false,

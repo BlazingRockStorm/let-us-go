@@ -4,7 +4,7 @@
     <% if current_user.admin? %>
       <%= render('layouts/adminsidenav') %>
     <% else %>
-      <%= render('layouts/providersidenav') %>
+      <%= render('layouts/organizersidenav') %>
     <% end %>
     <div class="col-md-9">
       <h1>Events</h1>
@@ -37,6 +37,6 @@
       </table>
       <br>
 
-      <%= link_to 'New Event', new_event_path, class: "btn btn-success" if current_user.provider? %>
+      <%= link_to 'New Event', new_event_path, class: "btn btn-success" if current_user.organizer? %>
     </div>
 </div>
