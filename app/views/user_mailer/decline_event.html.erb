@@ -1,3 +1,10 @@
 Hello <%= @user.name %>,
-We regret to tell you that your request to join event <%= @event.name %> is declined due to some problems.
-We hope that you will join other event in the future.
+We are sorry to tell you that your request to join event <%= @event.name %> is declined.
+Here is the information of the event:
+<ul>
+  <li>Name: <%= @event.name %></li>
+  <li>Description: <%= @event.description %></li>
+  <li>Place: <%= @event.place.name %></li>
+  <li>View more: <%= link_to "Here", event_url(@event) %></li>
+</ul>
+We hope that you can click the link above to rearrange your attendance.

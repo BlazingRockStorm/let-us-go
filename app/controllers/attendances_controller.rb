@@ -1,7 +1,7 @@
 class AttendancesController < ApplicationController
 
     before_action :find_event
-    before_action :find_attendance, only: [:edit, :update, :destroy, :approve, :decline]
+    before_action :find_attendance, only: [:edit, :update, :destroy, :approve, :decline, :pay]
     after_action :verify_authorized, only: [:edit, :update, :destroy]
   
   
@@ -12,6 +12,8 @@ class AttendancesController < ApplicationController
     def create
       @attendance = @event.attendances.new(params[:attendance].permit(:adults_number, :children_number, :start_time, :end_time))
       @attendance.user_id = current_user.id
+      @attendance.update_attribute(:approve_status, nil)
+      @attendance.update_attribute(:payment_status, false)
   
       respond_to do |format|
         if @attendance.save
@@ -33,6 +35,8 @@ class AttendancesController < ApplicationController
   
     def update
       authorize @attendance
+      @attendance.update_attribute(:approve_status, nil)
+      @attendance.update_attribute(:payment_status, false)
       respond_to do |format|
       if @attendance.update(params[:attendance].permit(:adults_number, :children_number, :start_time, :end_time))
         format.js
@@ -66,7 +70,9 @@ class AttendancesController < ApplicationController
     end
 
     def pay
+      authorize @attendance
       @attendance.update_attribute(:payment_status, true)
+      redirect_to @event
     end
 
     private

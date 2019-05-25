@@ -116,11 +116,17 @@
               <div class="card mb-2">
                 <div class="card-body">
                   <p>You have signed up for <span id="current_attendance"><%= @attendance.adults_number %> adults and <%= @attendance.children_number %></span> children.</p>
-                  <%= link_to "Edit Joining", edit_event_attendance_path(@event, @attendance), :remote => true,
-                    :class => "btn btn-success", 'data-toggle' => 'modal', 'data-target' => "#attend-form" %>
-                  <%= link_to "Cancel Joining", event_attendance_path(@event, @attendance), method: :delete,
-                  data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
-                   <%= link_to 'Pay', "#", :class => "btn btn-secondary disabled" %>
+                    <% if @attendance.approve_status == false || @attendance.approve_status == nil %>
+                      <%= link_to "Edit Joining", edit_event_attendance_path(@event, @attendance), :remote => true,
+                        :class => "btn btn-success", 'data-toggle' => 'modal', 'data-target' => "#attend-form" %>
+                      <%= link_to "Cancel Joining", event_attendance_path(@event, @attendance), method: :delete,
+                      data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
+                      <%= link_to 'Pay', "#", :class => "btn btn-secondary disabled" %>
+                    <% elsif @attendance.payment_status == false %>
+                      <%= link_to 'Pay', pay_event_attendance_path(@event, @attendance), :class => "btn btn-success" %>
+                    <% else %>
+                      You have paid for the event. Enjoy the fun!
+                    <% end %>
                    <%= link_to 'Back', "javascript: history.go(-1)", :class => "btn btn-link" %>
                 </div>
               </div>

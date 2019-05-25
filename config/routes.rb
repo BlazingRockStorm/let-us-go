@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     resources :comments, :except => [:index]
     resources :attendances do
       member do
-        get :approve, :decline
+        get :approve, :decline, :pay
       end
     end
   end
