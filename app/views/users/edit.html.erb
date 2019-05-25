@@ -2,8 +2,8 @@
   <div class="row mt-5">
     <% if current_user.admin? %>
       <%= render('layouts/adminsidenav') %>
-    <% elsif user_signed_in? && current_user.provider? %>
-      <%= render('layouts/providersidenav') %>
+    <% elsif user_signed_in? && current_user.organizer? %>
+      <%= render('layouts/organizeridenav') %>
     <% else %>
       <%= render('layouts/sidenav') %>
     <% end %>
@@ -106,8 +106,8 @@
                 <%= label :role, 'Admin' %>
               </div>
               <div class="col-md-3">
-                <%= form.radio_button :role, 'provider' %>
-                <%= label :role, 'Provider' %> 
+                <%= form.radio_button :role, 'organizer' %>
+                <%= label :role, 'Organizer' %> 
               </div>
             </div>
           <% end %>

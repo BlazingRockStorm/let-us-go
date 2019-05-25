@@ -5,8 +5,8 @@
 
     <% if user_signed_in? && current_user.admin? %>
       <%= render('layouts/adminsidenav') %>
-    <% elsif user_signed_in? && current_user.provider? %>
-      <%= render('layouts/providersidenav') %>
+    <% elsif user_signed_in? && current_user.organizer? %>
+      <%= render('layouts/organizersidenav') %>
     <% else %>
       <%= render('layouts/sidenav') %>
     <% end %>

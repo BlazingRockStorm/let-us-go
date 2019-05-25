@@ -64,7 +64,6 @@ ActiveRecord::Schema.define(version: 2019_05_20_170831) do
     t.json "pictures"
     t.integer "age_filter"
     t.integer "place_id"
-    t.integer "provider_id"
     t.string "indoor_status"
     t.string "sex_status"
     t.integer "adult_price"
