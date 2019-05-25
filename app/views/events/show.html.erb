@@ -49,7 +49,11 @@
 
           <p>
             <strong>Suitable for:</strong>
-            <%= @event.age_filter %> years old
+              <% if(@event.age_filter==0) %>
+                All ages
+              <% else %>
+                <%= @event.age_filter %> years old
+              <% end %>
           </p>
 
           <p>

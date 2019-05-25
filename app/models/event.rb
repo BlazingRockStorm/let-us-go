@@ -14,7 +14,7 @@ class Event < ApplicationRecord
     belongs_to :place
 
     search_scope :search do
-        attributes :name, :description, :start, :age_filter
+        attributes :name, :description, :sex_status, :age_filter, :indoor_status, :adult_price, :child_price
         attributes place: "place.name"
         # ...
     end
