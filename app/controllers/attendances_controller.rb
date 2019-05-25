@@ -18,7 +18,7 @@ class AttendancesController < ApplicationController
           format.html { redirect_to @event }
           format.json { render :show, status: :created, location: [@event] }
         else
-          format.html { render "events/show" }
+          format.html { redirect_to @event }
           format.json { render json: @attendance.errors, status: :unprocessable_entity }
         end
       end
