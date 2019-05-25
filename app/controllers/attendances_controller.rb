@@ -14,6 +14,7 @@ class AttendancesController < ApplicationController
       @attendance.user_id = current_user.id
       @attendance.update_attribute(:approve_status, nil)
       @attendance.update_attribute(:payment_status, false)
+      @attendance.update_attribute(:total_price, @event.adult_price*@attendance.adults_number + @event.child_price*@attendance.children_number)
   
       respond_to do |format|
         if @attendance.save
@@ -37,6 +38,7 @@ class AttendancesController < ApplicationController
       authorize @attendance
       @attendance.update_attribute(:approve_status, nil)
       @attendance.update_attribute(:payment_status, false)
+      @attendance.update_attribute(:total_price, @event.adult_price*@attendance.adults_number + @event.child_price*@attendance.children_number)
       respond_to do |format|
       if @attendance.update(params[:attendance].permit(:adults_number, :children_number, :start_time, :end_time))
         format.js

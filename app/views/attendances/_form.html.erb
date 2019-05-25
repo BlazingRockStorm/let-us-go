@@ -11,13 +11,13 @@
             <div class="row">
                 <%= form.label :adults_number, "Number of adults", class: "control-label col-sm-4" %>
                 <div class="col-sm-8">
-                    <%= form.number_field :adults_number, class: 'form-control attend-number-box', autofocus: true, :id => 'attend-number-box', min: 1, max: 2, required: true %>
+                    <%= form.number_field :adults_number, class: 'form-control attend-number-box', autofocus: true, :id => 'attend-number-box-1', min: 1, max: 2, required: true %>
                 </div>
             </div>
             <div class="row mt-2">
                 <%= form.label :children_number, "Number of children", class: "control-label col-sm-4" %>
                 <div class="col-sm-8">
-                    <%= form.number_field :children_number, class: 'form-control attend-number-box', autofocus: true, :id => 'attend-number-box', min: 1, max: 5, required: true %>
+                    <%= form.number_field :children_number, class: 'form-control attend-number-box', autofocus: true, :id => 'attend-number-box-2', min: 1, max: 5, required: true %>
                 </div>
             </div>  
             <div class="form-group row">
@@ -46,15 +46,24 @@
 
             <div class="form-group row">
                 <%= form.label "Total Amount", :class => "control-label col-sm-2" %>
-                <div class="col-sm-10">
-                    1.200.000 VND<!--attendance.total_price = attendance.adult_number * event.adult_price + attendance.children_number * event.child_price-->
+                <div class="offset-sm-4 col-sm-4" style="text-align:right">
+                    <p id="preview"></p>
                 </div>
+                <div class="col-sm-2" style="text-align:right">VND</div>
             </div>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <%= form.submit form.object.new_record? ? "Join Event" : "Update Joining Event", id: "confirm-join", class: "btn btn-primary" %>
         </div>
+        <script>
+            $('.attend-number-box').keyup(function(){
+                var $this = $(this);
+                var adult=parseInt( $('#attend-number-box-1').val() ,  10  )*<%=@event.adult_price%>;
+                var child=parseInt( $('#attend-number-box-2').val() ,  10  )*<%=@event.child_price%>;
+                $('#preview').html(adult+child);
+            });
+        </script>
     <% end %>
 </div>
 <script>
