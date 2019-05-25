@@ -1,7 +1,7 @@
 class AttendancesController < ApplicationController
 
     before_action :find_event
-    before_action :find_attendance, only: [:destroy, :edit, :update]
+    before_action :find_attendance, only: [:edit, :update, :destroy, :approve, :decline]
     after_action :verify_authorized, only: [:edit, :update, :destroy]
   
   
@@ -52,12 +52,17 @@ class AttendancesController < ApplicationController
     end
   
     def approve
+      authorize @attendance
       @attendance.update_attribute(:approve_status, true)
-      # send mail
+      redirect_to @event
+      UserMailer.approve_event(@attendance.user, @event).deliver_now
     end
 
     def decline
-      # send mail
+      authorize @attendance
+      @attendance.update_attribute(:approve_status, false)
+      redirect_to @event
+      UserMailer.decline_event(@attendance.user, @event).deliver_now
     end
 
     def pay

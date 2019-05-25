@@ -108,24 +108,9 @@
       
       <% if user_signed_in? %>
         <% if current_user.organizer? or current_user.admin? %>
-            <%= link_to 'Edit', edit_event_path(@event), :class => "btn btn-primary" %> 
-            <%= link_to 'Back', "javascript: history.go(-1)", :class => "btn btn-secondary" %>
-            <div class="comments-list mt-2">
-              <div class="card">
-                <div class="card-body">
-                  <p><a href="#">user 1</a></p>
-                  <p>Number of adults: </p>
-                  <p>Number of children: </p>
-                  <p>Start time: </p>
-                  <p>End time: </p>
-                  <p>Total price: </p>
-                </div>
-                <div class="card-footer">
-                  <button class="btn btn-danger pull-right">Decline</button><!--attendance.approve_status=false và gửi mail-->
-                  <button class="btn btn-success pull-right mr-2">Approve</button><!--attendance.approve_status=true và gửi mail-->
-                </div>
-              </div>
-            </div>
+          <%= link_to 'Edit', edit_event_path(@event), :class => "btn btn-primary" %> 
+          <%= link_to 'Back', "javascript: history.go(-1)", :class => "btn btn-secondary" %>
+          <%= render @event.attendances %>
         <% else %>
             <% if @event.user_ids.include?(current_user.id) %>
               <div class="card mb-2">
