@@ -15,7 +15,7 @@
       <% if params[:tag] %>
         <h2>Results for tag: <%= link_to('#'+params[:tag], params[:tag]) %></h2>
       <% end %>
-      <% if params[:search] %>
+      <% if params[:search] && params[:search] != "" %>
         <h2><%= @events_found %> results for events with: <%= params[:search] %></h2>
       <% end %>
       <% @events.each do |event| %>
@@ -44,7 +44,7 @@
         </div>
       <% end %>
 
-      <% if params[:search] %>
+      <% if params[:search] && params[:search] != "" %>
         <h2><%= @places_found %> results for places with: <%= params[:search] %></h2>
           <% @places.each do |place| %>
             <div class="card mb-2">

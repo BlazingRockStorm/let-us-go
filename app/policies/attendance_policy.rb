@@ -17,4 +17,16 @@ class AttendancePolicy < ApplicationPolicy
     def destroy?
       @current_user == @attendance.user
     end
+
+    def approve?
+      @current_user.organizer? or @current_user.admin?
+    end
+
+    def decline?
+      @current_user.organizer? or @current_user.admin?
+    end
+
+    def pay?
+      @current_user == @attendance.user
+    end
 end

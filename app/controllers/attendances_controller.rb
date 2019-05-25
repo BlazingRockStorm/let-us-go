@@ -51,6 +51,19 @@ class AttendancesController < ApplicationController
       end
     end
   
+    def approve
+      @attendance.update_attribute(:approve_status, true)
+      # send mail
+    end
+
+    def decline
+      # send mail
+    end
+
+    def pay
+      @attendance.update_attribute(:payment_status, true)
+    end
+
     private
     def find_event
       @event = Event.find(params[:event_id])
