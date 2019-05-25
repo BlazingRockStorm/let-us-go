@@ -12,11 +12,7 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     authorize Event
-    if current_user.admin?
-      @events = Event.all
-    else
-      @events = current_user.events.all
-    end
+    @events = Event.all
   end
 
   # GET /events/1

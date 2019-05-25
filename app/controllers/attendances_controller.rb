@@ -10,7 +10,7 @@ class AttendancesController < ApplicationController
     end
   
     def create
-      @attendance = @event.attendances.new(params[:attendance].permit(:adults_number, :children_number))
+      @attendance = @event.attendances.new(params[:attendance].permit(:adults_number, :children_number, :start_time, :end_time))
       @attendance.user_id = current_user.id
   
       respond_to do |format|
@@ -34,7 +34,7 @@ class AttendancesController < ApplicationController
     def update
       authorize @attendance
       respond_to do |format|
-      if @attendance.update(params[:attendance].permit(:adults_number, :children_number))
+      if @attendance.update(params[:attendance].permit(:adults_number, :children_number, :start_time, :end_time))
         format.js
       else
         format.js

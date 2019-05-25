@@ -11,16 +11,39 @@
             <div class="row">
                 <%= form.label :adults_number, "Number of adults", class: "control-label col-sm-4" %>
                 <div class="col-sm-8">
-                    <%= form.number_field :adults_number, class: 'form-control attend-number-box', autofocus: true, :id => 'attend-number-box', min: 1, max: 2 %>
+                    <%= form.number_field :adults_number, class: 'form-control attend-number-box', autofocus: true, :id => 'attend-number-box', min: 1, max: 2, required: true %>
                 </div>
             </div>
             <div class="row mt-2">
                 <%= form.label :children_number, "Number of children", class: "control-label col-sm-4" %>
                 <div class="col-sm-8">
-                    <%= form.number_field :children_number, class: 'form-control attend-number-box', autofocus: true, :id => 'attend-number-box', min: 1, max: 5 %>
+                    <%= form.number_field :children_number, class: 'form-control attend-number-box', autofocus: true, :id => 'attend-number-box', min: 1, max: 5, required: true %>
+                </div>
+            </div>  
+            <div class="form-group row">
+                <%= form.label :start, :class => "control-label col-sm-2" %>
+                <div class="col-sm-10">
+                    <%= form.text_field :start_time, :id => "start_time", :class => "form-control", :autocomplete => "off", required: true %>
                 </div>
             </div>
 
+            <div class="form-group row">
+                <%= form.label :end, :class => "control-label col-sm-2" %>
+                <div class="col-sm-10">
+                    <%= form.text_field :end_time, :id => "end_time", :class => "form-control", :autocomplete => "off", required: true %>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="form-group row">
+                <%= form.label "Total Amount", :class => "control-label col-sm-2" %>
+                <div class="col-sm-10">
+                    1.200.000 VND<!--attendance.total_price = attendance.adult_number * event.adult_price + attendance.children_number * event.child_price-->
+                    <!--attendance.payment_status=false-->
+                    <!--attendance.approve_status=false-->
+                </div>
+            </div>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -28,3 +51,25 @@
         </div>
     <% end %>
 </div>
+<script>
+  $('#start_time').datetimepicker({ 
+    footer: true,
+    format: 'HH:MM yyyy-mm-dd',
+    datepicker: { 
+      minDate: function() {
+        var date = new Date();
+        return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+      }
+    }
+  });
+  $('#end_time').datetimepicker({ 
+    footer: true,
+    format: 'HH:MM yyyy-mm-dd',
+    datepicker: { 
+      minDate: function() {
+        var date = new Date();
+        return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+      }
+    }
+  });
+</script>
