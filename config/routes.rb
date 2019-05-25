@@ -15,7 +15,11 @@ Rails.application.routes.draw do
   resources :users
   resources :events do
     resources :comments, :except => [:index]
-    resources :attendances
+    resources :attendances do
+      member do
+        get :approve, :decline
+      end
+    end
   end
   put 'events/:id/public' => 'events#public_event', as: 'public_event'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
