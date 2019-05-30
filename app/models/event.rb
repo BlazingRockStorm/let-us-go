@@ -12,6 +12,8 @@ class Event < ApplicationRecord
     has_many_attached :pictures
     scope :by_hidden_status, -> {where hidden_status: false}
     belongs_to :place
+    enum indoor_status: [:Indoor, :Outdoor]
+    enum sex_status: [:Boys, :Girls, "Boys and Girls"]
 
     search_scope :search do
         attributes :name, :description, :sex_status, :age_filter, :indoor_status, :adult_price, :child_price
