@@ -1,0 +1,61 @@
+<div class="jumbotron"></div>
+<div class="container">
+  <div class="row">
+    <% if user_signed_in? && current_user.admin? %>
+      <%= render('layouts/adminsidenav') %>
+    <% elsif user_signed_in? && current_user.organizer? %>
+      <%= render('layouts/organizersidenav') %>
+    <% else %>
+      <%= render('layouts/sidenav') %>
+    <% end %>
+
+    <div class="col-md-7">
+      <h1>Advance search </h1><i>(Có thể để trống bất kì trường nào)</i>
+      <%= form_for @search do |f| %>
+        <div>
+          <%= f.label :name %>
+          <%= f.text_field :name %>
+        </div>
+
+        <div>
+          <%= f.label "Tag" %>
+          <ul>
+            <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name do |b|%>
+              <li><%= b.check_box %> <%= b.label %></li>
+            <% end %>
+          </ul>
+        </div>
+
+        <div>Indoor or Outdoor</br>
+          <%= f.radio_button :status, 0 %> <%= f.label :status, "Indoor"%>
+          <%= f.radio_button :status, 1 %> <%= f.label :status, "Outdoor"%>
+        </div>
+
+        <div>Boy or Girl</br>
+          <%= f.radio_button :sex, 0 %> <%= f.label :sex, "Boys" %>
+          <%= f.radio_button :sex, 1 %> <%= f.label :sex, "Girls" %>
+          <%= f.radio_button :sex, 2 %> <%= f.label :sex, "Boys and Girls" %> 
+        </div>
+
+        <div>
+          <%= f.label "Age" %>
+          <%= f.number_field :min_age, placeholder: "Min age" %> - <%= f.number_field :max_age, placeholder: "Max age" %>
+        </div>
+
+        <div>
+          <%= f.label "Adult price"%>
+          <%= f.text_field :min_adult_price, placeholder: "Min price" %> - <%= f.text_field :max_adult_price, placeholder: "Max price" %>
+        </div>
+
+        <div>
+          <%= f.label "Child price"%>
+          <%= f.text_field :min_child_price, placeholder: "Min price" %> - <%= f.text_field :max_child_price, placeholder: "Max price" %>
+        </div>
+        
+        <div>
+          <%= f.submit "Search" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

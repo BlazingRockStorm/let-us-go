@@ -1,0 +1,51 @@
+<div class="jumbotron"></div>
+<div class="container">
+  <div class="row">
+    <% if user_signed_in? && current_user.admin? %>
+      <%= render('layouts/adminsidenav') %>
+    <% elsif user_signed_in? && current_user.organizer? %>
+      <%= render('layouts/organizersidenav') %>
+    <% else %>
+      <%= render('layouts/sidenav') %>
+    <% end %>
+    <div class="col-md-7">
+      <h1>Search Result</h1>
+      <p><%= link_to "Find another", new_search_path, class: "btn btn-primary" %></p>
+      <% if @search.search_events.empty? %>
+        <h2>No events found</h2>
+      <% else %>
+        <% @search.search_events.each do |event| %>
+          <div class="card mb-2">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-4 first-picture">
+                  <%= image_tag(event.pictures.first, :alt => "Event picture", :class => "events-list-picture") if event.pictures.attached? %>
+                  <%= image_tag(image_url("blank.jpg"), :alt => "Event picture", :class => "events-list-picture") if event.pictures.attached? == false %>
+                </div>
+                <div class="col-md-8">
+                  <%= link_to content_tag(:h5, event.name, :class => "card-title"), event_path(event)%>
+                  
+                  <h6 class="card-subtitle mb-2 text-muted"><%= fa_icon "map-marker" %> <%= event.place.name %></h6>
+                  <p class="card-text">
+                    <strong><%= fa_icon "tags" %></strong>
+                    <%=raw tag_links(event.all_tags)%>
+                  </p>
+                  <p class="card-text"><%= event.description %></p>
+                  <p class="card-text">Suitable for: 
+                    <% if(event.age_filter==0) %>
+                      All ages
+                    <% else %>
+                      <%= event.age_filter %> years old
+                    <% end %>
+                  </p>
+                  <p class="card-text">Adult's price: <%= event.adult_price %> VND</p>
+                  <p class="card-text">Child's price: <%= event.child_price %> VND</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

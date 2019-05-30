@@ -51,26 +51,26 @@
   <div class="form-group row">
     <%= form.label "Towards", class: "col-md-3 col-form-label" %>
     <div class="col-md-2">
-      <%= form.radio_button :sex_status, 'Boys' %>
+      <%= form.radio_button :sex_status, :boys %>
       <%= label :sex_status, 'Boys' %>
     </div>
     <div class="col-md-2">
-      <%= form.radio_button :sex_status, 'Girls' %>
+      <%= form.radio_button :sex_status, :girls %>
       <%= label :sex_status, 'Girls' %> 
     </div>
     <div class="col-md-3">
-      <%= form.radio_button :sex_status, 'Boys and Girls' %>
+      <%= form.radio_button :sex_status, :boys_and_girls %>
       <%= label :sex_status, 'Boys and Girls' %> 
     </div>
   </div>
 
 <div class="form-group row">
     <div class="offset-md-3 col-md-3">
-      <%= form.radio_button :indoor_status, 'Indoor' %>
+      <%= form.radio_button :indoor_status, :indoor %>
       <%= label :indoor_status, 'Indoor' %>
     </div>
     <div class="col-md-3">
-      <%= form.radio_button :indoor_status, 'Outdoor' %>
+      <%= form.radio_button :indoor_status, :outdoor %>
       <%= label :indoor_status, 'Outdoor' %> 
     </div>
   </div>

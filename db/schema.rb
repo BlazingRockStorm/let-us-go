@@ -85,6 +85,25 @@ ActiveRecord::Schema.define(version: 2019_05_30_021952) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "searches", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.integer "status"
+    t.integer "sex"
+    t.integer "min_age"
+    t.integer "max_age"
+    t.decimal "min_adult_price", precision: 10
+    t.decimal "max_adult_price", precision: 10
+    t.decimal "min_child_price", precision: 10
+    t.decimal "max_child_price", precision: 10
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "searches_tags", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "tag_id", null: false
+    t.bigint "search_id", null: false
+  end
+
   create_table "taggings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "event_id"
     t.bigint "tag_id"
