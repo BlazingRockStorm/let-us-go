@@ -13,15 +13,18 @@
 
     <div class="col-md-7">
       <% if params[:tag] %>
-        <%= render('layouts/advanced_search') %>
+        <%#= render('layouts/advanced_search') %>
+        <%= link_to "Advanced Search", new_search_path, class: "btn btn-primary" %>
         <h2>Results for tag: <%= link_to('#'+params[:tag], params[:tag]) %></h2>
       <% end %>
       <% if params[:search] && params[:search] != "" %>
-        <%= render('layouts/advanced_search') %>
+        <%#= render('layouts/advanced_search') %>
+        <%= link_to "Advanced Search", new_search_path, class: "btn btn-primary" %>
         <h2><%= @events_found %> results for events with: <%= params[:search] %></h2>
       <% end %>
 
       <% if params[:age] %>
+        <%= link_to "Advanced Search", new_search_path, class: "btn btn-primary" %>
         <%= render('layouts/advanced_search') %>
       <% end %>
       
