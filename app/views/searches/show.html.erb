@@ -47,5 +47,17 @@
         <% end %>
       <% end %>
     </div>
+    
+    <div class="col-md-3">
+      <%= render('layouts/advertisement') %>
+
+      <div class="card mt-2">
+        <div class="card-header">
+          Featured Places
+        </div>
+        <%= render partial: "places/random",  collection: @random_places, as: "place" %>
+      </div>
+
+    </div>
   </div>
 </div>

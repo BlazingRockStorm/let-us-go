@@ -25,7 +25,6 @@
 
       <% if params[:age] %>
         <%= link_to "Advanced Search", new_search_path, class: "btn btn-primary" %>
-        <%= render('layouts/advanced_search') %>
       <% end %>
       
       <% @events.each do |event| %>

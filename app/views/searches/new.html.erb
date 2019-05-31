@@ -10,52 +10,96 @@
     <% end %>
 
     <div class="col-md-7">
-      <h1>Advance search </h1><i>(Có thể để trống bất kì trường nào)</i>
+      <h1>Advance search </h1>
       <%= form_for @search do |f| %>
-        <div>
-          <%= f.label :name %>
-          <%= f.text_field :name %>
+        <div class="form-group row">
+          <%= f.label :name, :class => "control-label col-sm-2" %>
+          <div class="col-sm-10">
+            <%= f.text_field :name, :class => "form-control" %>
+          </div>
         </div>
 
-        <div>
-          <%= f.label "Tag" %>
-          <ul>
+        <div class="form-group row">
+          <%= f.label "Tag", :class => "control-label col-sm-2" %>
+          <ul class="col-sm-10">
             <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name do |b|%>
-              <li><%= b.check_box %> <%= b.label %></li>
+              <li style="list-style-type: none;"><%= b.check_box %> <%= b.label %></li>
             <% end %>
           </ul>
         </div>
 
-        <div>Indoor or Outdoor</br>
-          <%= f.radio_button :status, 0 %> <%= f.label :status, "Indoor"%>
-          <%= f.radio_button :status, 1 %> <%= f.label :status, "Outdoor"%>
+        <div class="form-group row">
+          <label class="control-label col-sm-3">Indoor or Outdoor</label>
+          <div class="col-sm-4">
+            <%= f.radio_button :status, 0 %> <%= f.label :status, "Indoor"%>
+          </div>
+          <div class="col-sm-4">
+            <%= f.radio_button :status, 1 %> <%= f.label :status, "Outdoor"%>
+          </div>
         </div>
 
-        <div>Boy or Girl</br>
-          <%= f.radio_button :sex, 0 %> <%= f.label :sex, "Boys" %>
-          <%= f.radio_button :sex, 1 %> <%= f.label :sex, "Girls" %>
-          <%= f.radio_button :sex, 2 %> <%= f.label :sex, "Boys and Girls" %> 
+        <div class="form-group row">
+          <label class="control-label col-sm-3">Boys or Girls</label>
+          <div class="col-sm-3">
+            <%= f.radio_button :sex, 0 %> <%= f.label :sex, "Boys" %>
+          </div>
+          <div class="col-sm-3">
+            <%= f.radio_button :sex, 1 %> <%= f.label :sex, "Girls" %>
+          </div>
+          <div class="col-sm-3">
+            <%= f.radio_button :sex, 2 %> <%= f.label :sex, "Boys and Girls" %> 
+          </div>
         </div>
 
-        <div>
-          <%= f.label "Age" %>
-          <%= f.number_field :min_age, placeholder: "Min age" %> - <%= f.number_field :max_age, placeholder: "Max age" %>
+        <div class="form-group row">
+          <%= f.label "Age", :class => "control-label col-sm-2" %>
+          <div class="col-sm-3">
+            <%= f.number_field :min_age, placeholder: "Min age", :class=>"form-control", min: 0, max: 9 %> 
+          </div>
+          <div class='col-sm-1'>-</div>
+          <div class="col-sm-3">
+            <%= f.number_field :max_age, placeholder: "Max age", :class=>"form-control", min: 0, max: 9 %> 
+          </div>
         </div>
 
-        <div>
-          <%= f.label "Adult price"%>
-          <%= f.text_field :min_adult_price, placeholder: "Min price" %> - <%= f.text_field :max_adult_price, placeholder: "Max price" %>
+        <div class="form-group row">
+          <%= f.label "Adult price", :class => "control-label col-sm-2" %>
+          <div class="col-sm-3">
+            <%= f.text_field :min_adult_price, placeholder: "Min price", :class=>"form-control" %>
+          </div>
+          <div class='col-sm-1'>-</div>
+          <div class="col-sm-3">
+            <%= f.text_field :max_adult_price, placeholder: "Max price", :class=>"form-control" %>
+          </div>
         </div>
 
-        <div>
-          <%= f.label "Child price"%>
-          <%= f.text_field :min_child_price, placeholder: "Min price" %> - <%= f.text_field :max_child_price, placeholder: "Max price" %>
+        <div class="form-group row">
+          <%= f.label "Child price", :class => "control-label col-sm-2" %>
+          <div class="col-sm-3">
+            <%= f.text_field :min_child_price, placeholder: "Min price", :class=>"form-control" %>
+          </div>
+          <div class='col-sm-1'>-</div>
+          <div class="col-sm-3">
+            <%= f.text_field :max_child_price, placeholder: "Max price", :class=>"form-control" %>
+          </div>
         </div>
         
         <div>
-          <%= f.submit "Search" %>
+          <%= f.submit "Search", class: "btn btn-primary" %>
         </div>
       <% end %>
+    </div>
+
+    <div class="col-md-3">
+      <%= render('layouts/advertisement') %>
+
+      <div class="card mt-2">
+        <div class="card-header">
+          Featured Places
+        </div>
+        <%= render partial: "places/random",  collection: @random_places, as: "place" %>
+      </div>
+
     </div>
   </div>
 </div>

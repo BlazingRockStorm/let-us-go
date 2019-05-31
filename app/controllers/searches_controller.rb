@@ -1,6 +1,7 @@
 class SearchesController < ApplicationController
   def new
     @search = Search.new
+    @random_places = Place.order("RAND()").first(3)
   end
 
   def create
@@ -10,6 +11,7 @@ class SearchesController < ApplicationController
 
   def show
     @search = Search.find(params[:id])
+    @random_places = Place.order("RAND()").first(3)
   end
 
   private

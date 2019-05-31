@@ -253,8 +253,8 @@ events = Event.create!([
         age_filter: 1,
         tag_ids: [1, 2, 3],
         indoor_status: 1,
-        adult_price: '200000',
-        child_price: '100000'
+        adult_price: '50000',
+        child_price: '50000'
     }, {
         name: "Dã ngoại ở công viên Thống Nhất",
         description: "Với cây xanh và hồ trong sạch, cùng trải nghiệm các hoạt động ngoài trời",
@@ -264,8 +264,8 @@ events = Event.create!([
         age_filter: 5,
         tag_ids: [4, 5, 6],
         indoor_status: 1,
-        adult_price: '200000',
-        child_price: '100000'
+        adult_price: '300000',
+        child_price: '150000'
     }, {
         name: "Chương trình xiếc đặc biệt",
         description: "Chương trình có sự tham gia của rất nhiều nghệ sĩ xiếc nổi tiếng trong và ngoài nước. Giữa chương trình có các tiết mục biểu diễn hài và ca nhạc. Buổi diễn chỉ bán vé cho các gia đình có con nhỏ",
@@ -275,7 +275,7 @@ events = Event.create!([
         age_filter: 6,
         tag_ids: [3],
         indoor_status: 0,
-        adult_price: '200000',
+        adult_price: '300000',
         child_price: '100000'
     }, {
         name: "Trải nghiệm tự tay làm đồ gốm",
@@ -286,8 +286,8 @@ events = Event.create!([
         age_filter: 5,
         tag_ids: [2],
         indoor_status: 0,
-        adult_price: '200000',
-        child_price: '100000'
+        adult_price: '250000',
+        child_price: '150000'
     }, {
         name: "Khám phá rừng Cúc Phương",
         description: "Dịp để các em nhỏ tìm hiểu với thiên nhiên và tham quan Cây chò ngàn năm",
@@ -297,7 +297,7 @@ events = Event.create!([
         age_filter: 8,
         tag_ids: [2,4,5],
         indoor_status: 1,
-        adult_price: '200000',
+        adult_price: '250000',
         child_price: '100000'
     }, {
         name: "Làm quen với nhạc cụ dân tộc",
@@ -308,8 +308,8 @@ events = Event.create!([
         age_filter: 8,
         tag_ids: [2,4],
         indoor_status: 0,
-        adult_price: '200000',
-        child_price: '100000'
+        adult_price: '80000',
+        child_price: '50000'
     }, {
         name: "Xem múa rối nước",
         description: "Sự kiện tổ chức nhằm cho các em thiếu nhi làm quen với nghệ thuật múa rối nước",
@@ -319,8 +319,8 @@ events = Event.create!([
         age_filter: 4,
         tag_ids: [2,4],
         indoor_status: 1,
-        adult_price: '200000',
-        child_price: '100000'
+        adult_price: '70000',
+        child_price: '50000'
     }, {
         name: "Trò chơi vận động tổng hợp",
         description: "Sự kiện tổ chức nhằm cho các em thiếu nhi vận động",
@@ -330,8 +330,8 @@ events = Event.create!([
         age_filter: 4,
         tag_ids: [2],
         indoor_status: 1,
-        adult_price: '200000',
-        child_price: '100000'
+        adult_price: '100000',
+        child_price: '90000'
     }, {
         name: "Chương trình hài thiếu nhi",
         description: "Có sự góp mặt của các nghệ sĩ hài nổi tiếng",
@@ -341,8 +341,8 @@ events = Event.create!([
         age_filter: 4,
         tag_ids: [3],
         indoor_status: 0,
-        adult_price: '200000',
-        child_price: '100000'
+        adult_price: '120000',
+        child_price: '60000'
     }, {
         name: "Chương trình ca nhạc thiếu nhi",
         description: "Có sự góp mặt của các ca sĩ nổi tiếng",
@@ -352,7 +352,7 @@ events = Event.create!([
         age_filter: 4,
         tag_ids: [3],
         indoor_status: 0,
-        adult_price: '200000',
+        adult_price: '180000',
         child_price: '100000'
     }, {
         name: "Trò chơi vận động tổng hợp bãi biển",
@@ -363,8 +363,8 @@ events = Event.create!([
         age_filter: 4,
         tag_ids: [2],
         indoor_status: 1,
-        adult_price: '200000',
-        child_price: '100000'
+        adult_price: '140000',
+        child_price: '60000'
     },
 ])
 events[0].pictures.attach([
