@@ -1,0 +1,10 @@
+Hello <%= @user.name %>,
+We are happy to tell you that your request to join event <%= @event.name %> is approved.
+Here is the information of the event:
+<ul>
+  <li>Name: <%= @event.name %></li>
+  <li>Description: <%= @event.description %></li>
+  <li>Place: <%= @event.place.name %></li>
+  <li>View more: <%= link_to "Here", event_url(@event) %></li>
+</ul>
+We glad to see you at <%= @start_time.strftime("%H:%M - %d/%m/%Y") %>.

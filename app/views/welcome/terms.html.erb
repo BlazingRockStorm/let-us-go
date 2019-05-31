@@ -4,8 +4,8 @@
   <div class="row">
 
 
-    <% if user_signed_in? && current_user.provider? %>
-      <%= render('layouts/providersidenav') %>
+    <% if user_signed_in? && current_user.organizer? %>
+      <%= render('layouts/organizersidenav') %>
     <% else %>
       <%= render('layouts/sidenav') %>
     <% end %>

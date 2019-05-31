@@ -2,7 +2,7 @@
     <% if current_user.admin? %>
       <%= render('layouts/adminsidenav') %>
     <% else %>
-      <%= render('layouts/providersidenav') %>
+      <%= render('layouts/organizersidenav') %>
     <% end %>
     <div class="col-md-7">
         <h1>New Event</h1>

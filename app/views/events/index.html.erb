@@ -4,7 +4,7 @@
     <% if current_user.admin? %>
       <%= render('layouts/adminsidenav') %>
     <% else %>
-      <%= render('layouts/providersidenav') %>
+      <%= render('layouts/organizersidenav') %>
     <% end %>
     <div class="col-md-9">
       <h1>Events</h1>
@@ -14,8 +14,6 @@
           <tr>
             <th>Name</th>
             <th>Place</th>
-            <th>Start</th>
-            <th>End</th>
             <th colspan="5">Actions</th>
           </tr>
         </thead>
@@ -25,30 +23,20 @@
             <tr>
               <td><%= event.name %></td>
               <td><%= event.place.name %></td>
-              <td><%= time_format(event.start) %></td>
-              <td><%= time_format(event.end) %></td>
               <td><%= link_to 'Show', event, class: "btn btn-info" %></td>
-              <% if Time.now > event.end or current_user.admin? %>
-                <td><a class="btn btn-secondary" disabled="true">Edit</a></td>
-              <% else %>
-                <td><%= link_to 'Edit', edit_event_path(event), class: "btn btn-warning" %></td>
-              <% end %>
+              <td><%= link_to 'Edit', edit_event_path(event), class: "btn btn-warning" %></td>
               <% if event.hidden_status== true %>
                 <td><%= link_to 'Public Event', public_event_path(event), method: :put, data: { confirm: 'Are you sure?' }, class: "btn btn-warning" %></td>
               <% else %>
                 <td><%= link_to 'Event has been public', public_event_path(event), class: "btn btn-disabled" %></td>
               <% end %>
-              <% if Time.now > event.end %>
-                <td><a class="btn btn-secondary" disabled="true">Delete</a></td>
-              <% else %>
-                <td><%= link_to 'Delete', event, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
-              <% end %>
+              <td><%= link_to 'Delete', event, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
       <br>
 
-      <%= link_to 'New Event', new_event_path, class: "btn btn-success" if current_user.provider? %>
+      <%= link_to 'New Event', new_event_path, class: "btn btn-success" %>
     </div>
 </div>

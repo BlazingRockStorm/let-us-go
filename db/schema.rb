@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_06_022816) do
+ActiveRecord::Schema.define(version: 2019_05_30_021952) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -40,6 +40,11 @@ ActiveRecord::Schema.define(version: 2019_05_06_022816) do
     t.datetime "updated_at", null: false
     t.integer "adults_number"
     t.integer "children_number"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer "total_price"
+    t.boolean "approve_status"
+    t.boolean "payment_status"
     t.index ["event_id"], name: "index_attendances_on_event_id"
     t.index ["user_id"], name: "index_attendances_on_user_id"
   end
@@ -58,15 +63,16 @@ ActiveRecord::Schema.define(version: 2019_05_06_022816) do
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.datetime "start"
-    t.datetime "end"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "hidden_status"
     t.json "pictures"
     t.integer "age_filter"
     t.integer "place_id"
-    t.integer "provider_id"
+    t.integer "indoor_status"
+    t.integer "sex_status"
+    t.integer "adult_price"
+    t.integer "child_price"
   end
 
   create_table "places", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -77,6 +83,25 @@ ActiveRecord::Schema.define(version: 2019_05_06_022816) do
     t.decimal "longitude", precision: 10, scale: 6
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "searches", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.integer "status"
+    t.integer "sex"
+    t.integer "min_age"
+    t.integer "max_age"
+    t.decimal "min_adult_price", precision: 10
+    t.decimal "max_adult_price", precision: 10
+    t.decimal "min_child_price", precision: 10
+    t.decimal "max_child_price", precision: 10
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "searches_tags", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "tag_id", null: false
+    t.bigint "search_id", null: false
   end
 
   create_table "taggings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

@@ -1,0 +1,55 @@
+<div class="row">
+    <div class="col-md-12">
+        <table class="table" style="width:100%">
+            <tr>
+                <th>Name:</th>
+                <td colspan="10">
+                    <input type="checkbox">
+                </td>
+            </tr>
+            <tr>
+                <th>Tags:</th>
+                <td colspan="10">
+                    <input type="checkbox">
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <td><input type="checkbox">Indoor</td>
+                <td colspan="9"><input type="checkbox">Outdoor</td>
+            </tr>
+            <tr>
+                <th>Towards:</th>
+                <td><input type="checkbox">Boys</td>
+                <td colspan="2"><input type="checkbox">Girls</td>
+                <td colspan="8"><input type="checkbox">Boys and Girls</td>
+            </tr>
+            <tr>
+                <th>Age:</th>
+                    <% (0..9).each do |age| %>
+                    <% if(age==0) %>
+                        <td><input type="checkbox">All ages</td>
+                    <% else %>
+                        <td><input type="checkbox"><%= age %></td>
+                    <% end %>
+                <% end %>
+            </tr>
+            <tr>
+                <th>Adult price</th>
+                <td colspan="2"><input type="checkbox">&#x3c;200000</td>
+                <td colspan="5"><input type="checkbox">200000&#x3c;and&#x3c;1000000</td>
+                <td colspan="3"><input type="checkbox">&#x3e;1000000</td>
+            </tr>
+            <tr>
+                <th>Child price</th>
+                <td colspan="2"><input type="checkbox">&#x3c;100000</td>
+                <td colspan="5"><input type="checkbox">100000&#x3c;and&#x3c;500000</td>
+                <td colspan="3"><input type="checkbox">&#x3e;500000</td>
+            </tr>
+        </table>
+        <%= form_tag root_path, method: :get, class: "form-inline" do %>
+          <%= text_field_tag :search, params[:search], placeholder: 'search...', class: "form-control", style:"width:80%" %>
+          <%= submit_tag "Search", name: nil, class: "btn btn-primary" %>
+        <% end %>
+    </div>
+</div>

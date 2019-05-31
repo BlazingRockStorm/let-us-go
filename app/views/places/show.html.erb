@@ -11,7 +11,7 @@
     <% if user_signed_in? && current_user.admin? %>
       <%= render('layouts/adminsidenav') %>
     <% elsif user_signed_in? && current_user.provider? %>
-      <%= render('layouts/providersidenav') %>
+      <%= render('layouts/organizersidenav') %>
     <% else %>
       <%= render('layouts/sidenav') %>
     <% end %>
@@ -66,8 +66,6 @@
 
         <% if user_signed_in? && current_user.admin? %>
           <%= link_to 'Edit', edit_place_path(@place), class: "btn btn-warning" %>
-        <% else %>
-          <button>Show direction</button>
         <% end %>
         <%= link_to 'Back', places_path, class: "btn btn-link" %>
       </div>

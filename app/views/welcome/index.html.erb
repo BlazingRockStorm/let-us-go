@@ -5,19 +5,28 @@
 
     <% if user_signed_in? && current_user.admin? %>
       <%= render('layouts/adminsidenav') %>
-    <% elsif user_signed_in? && current_user.provider? %>
-      <%= render('layouts/providersidenav') %>
+    <% elsif user_signed_in? && current_user.organizer? %>
+      <%= render('layouts/organizersidenav') %>
     <% else %>
       <%= render('layouts/sidenav') %>
     <% end %>
 
     <div class="col-md-7">
       <% if params[:tag] %>
+        <%#= render('layouts/advanced_search') %>
+        <%= link_to "Advanced Search", new_search_path, class: "btn btn-primary" %>
         <h2>Results for tag: <%= link_to('#'+params[:tag], params[:tag]) %></h2>
       <% end %>
-      <% if params[:search] %>
+      <% if params[:search] && params[:search] != "" %>
+        <%#= render('layouts/advanced_search') %>
+        <%= link_to "Advanced Search", new_search_path, class: "btn btn-primary" %>
         <h2><%= @events_found %> results for events with: <%= params[:search] %></h2>
       <% end %>
+
+      <% if params[:age] %>
+        <%= link_to "Advanced Search", new_search_path, class: "btn btn-primary" %>
+      <% end %>
+      
       <% @events.each do |event| %>
         <div class="card mb-2">
           <div class="card-body">
@@ -35,16 +44,22 @@
                   <%=raw tag_links(event.all_tags)%>
                 </p>
                 <p class="card-text"><%= event.description %></p>
-                <p class="card-text">Suitable for: <%= event.age_filter %> years old</p>
-                <p class="card-text">Start: <%= time_format(event.start) %></p>
-                <p class="card-text">End: <%= time_format(event.end) %></p>
+                <p class="card-text">Suitable for: 
+                  <% if(event.age_filter==0) %>
+                    All ages
+                  <% else %>
+                    <%= event.age_filter %> years old
+                  <% end %>
+                </p>
+                <p class="card-text">Adult's price: <%= event.adult_price %> VND</p>
+                <p class="card-text">Child's price: <%= event.child_price %> VND</p>
               </div>
             </div>
           </div>
         </div>
       <% end %>
 
-      <% if params[:search] %>
+      <% if params[:search] && params[:search] != "" %>
         <h2><%= @places_found %> results for places with: <%= params[:search] %></h2>
           <% @places.each do |place| %>
             <div class="card mb-2">

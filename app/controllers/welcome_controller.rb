@@ -4,7 +4,7 @@ class WelcomeController < ApplicationController
   def index
     if params[:tag]
       @events = Event.by_hidden_status().tagged_with(params[:tag]).page params[:page]
-    elsif params[:search]
+    elsif params[:search] && params[:search] != ""
       @events = Event.by_hidden_status().search(params[:search]).page params[:page]
       @events_found = @events.count
       @places = Place.search(params[:search])

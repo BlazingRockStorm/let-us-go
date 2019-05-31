@@ -27,8 +27,12 @@
     <li class="nav-item dropdown dropright">
       <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Age</a>
       <div class="dropdown-menu">
-        <% (1..9).each do |age| %>
-          <%= link_to age, age_path(age), method: :get, class: "dropdown-item" %>
+        <% (0..9).each do |age| %>
+          <% if(age==0) %>
+            <%= link_to "All ages", age_path(age), method: :get, class: "dropdown-item" %>
+          <% else %>
+            <%= link_to age, age_path(age), method: :get, class: "dropdown-item" %>
+          <% end %>
         <% end %>
       </div>
     </li>
