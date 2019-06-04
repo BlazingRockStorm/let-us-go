@@ -19,7 +19,7 @@ class EventPolicy < ApplicationPolicy
     end
 
     def show?
-      @current_user && @current_user.admin? or @current_user && @current_user.organizer? or @event.hidden_status==false
+      true
     end
 
     def create?
@@ -28,10 +28,6 @@ class EventPolicy < ApplicationPolicy
 
     def update?
         @current_user.admin? or @current_user.organizer?
-    end
-
-    def public_event?
-      @current_user.admin? or @current_user.organizer?
     end
 
     def destroy?

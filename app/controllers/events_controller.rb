@@ -2,7 +2,7 @@ require 'open_weather'
 require 'event_recommender'
 
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy, :public_event]
+  before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:show]
   after_action :verify_authorized
 
@@ -48,7 +48,6 @@ class EventsController < ApplicationController
   def create
     authorize Event
     @event = Event.new(event_params)
-    @event.hidden_status = true
 
     respond_to do |format|
       if @event.save
@@ -73,15 +72,6 @@ class EventsController < ApplicationController
         format.html { render :edit }
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  def public_event
-    authorize Event
-    @event.update_attribute(:hidden_status, false)
-    respond_to do |format|
-      format.html { redirect_to events_url, notice: 'Event was successfully updated.' }
-      format.json { render :show, status: :ok, location: @event }
     end
   end
 

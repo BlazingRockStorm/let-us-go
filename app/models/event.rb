@@ -10,7 +10,6 @@ class Event < ApplicationRecord
     has_many :taggings, dependent: :delete_all
     has_many :tags, through: :taggings
     has_many_attached :pictures
-    scope :by_hidden_status, -> {where hidden_status: false}
     belongs_to :place
     enum indoor_status: [:indoor, :outdoor]
     enum sex_status: [:boys, :girls, :boys_and_girls]

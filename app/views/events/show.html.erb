@@ -82,7 +82,6 @@
                 <div class="MultiCarousel-inner">
                   <% @ids.each do |id| %> 
                     <% event=Event.find(id) %>
-                    <% if event.hidden_status == false %>
                       <div class="item">
                           <div class="pad15">
                             <div class="similar-first-picture">
@@ -98,7 +97,6 @@
                             <p class="similar">Suitable for: <%= event.age_filter %> years old</p>
                           </div>
                       </div>
-                    <% end %>
                   <% end %>
                 </div>
                 <button class="btn btn-primary leftLst"><</button>

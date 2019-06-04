@@ -65,7 +65,6 @@ ActiveRecord::Schema.define(version: 2019_05_30_021952) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "hidden_status"
     t.json "pictures"
     t.integer "age_filter"
     t.integer "place_id"
