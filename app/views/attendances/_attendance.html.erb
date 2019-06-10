@@ -6,7 +6,7 @@
       <p>Number of children: <%= attendance.children_number %></p>
       <p>Start time: <%= attendance.start_time.strftime("%H:%M - %d/%m/%Y") %></p>
       <p>End time: <%= attendance.end_time.strftime("%H:%M - %d/%m/%Y") %></p>
-      <p>Total price: </p>
+      <p>Total price: <%= attendance.total_price %> VND</p>
     </div>
     <div class="card-footer">
       <% if attendance.approve_status == true %>
