@@ -1,7 +1,8 @@
 class User < ApplicationRecord
   has_many :attendances, dependent: :delete_all
+  has_many :joined_events, ->{where(approve_status: :true)}, class_name: "Attendance"
   has_many :events, through: :attendances
-  has_many :joined_events, through: :attendances, source: :event
+  # has_many :joined_events, through: :attendances, source: :event
   enum role: [:user, :organizer, :admin]
   after_initialize :set_default_role, :if => :new_record?
   has_one_attached :avatar
